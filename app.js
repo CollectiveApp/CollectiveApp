@@ -24,6 +24,3 @@ require("./error-handling")(app);
 
 module.exports = app;
 
-//line to delete
-//other line to delete
-//new line to delete
