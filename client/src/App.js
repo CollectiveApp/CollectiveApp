@@ -1,4 +1,3 @@
-
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import Home from './pagesVisitor/Home'
@@ -7,10 +6,8 @@ import ProjectDetails from './pagesVisitor/ProjectDetails'
 import Events from './pagesVisitor/Events'
 import Volunteer from './pagesVisitor/Volunteer'
 import AdminDashboard from './pagesAdmin/AdminDashboard';
-import CreateProject from './pagesAdmin/CreateProject';
 import EditProject from './pagesAdmin/EditProject';
 import DeleteProject from './pagesAdmin/DeleteProject';
-import CreateEvent from './pagesAdmin/CreateEvent';
 import EditEvent from './pagesAdmin/EditEvent';
 import DeleteEvent from './pagesAdmin/DeleteEvent';
 import Login from './pagesLog/login'
@@ -20,8 +17,10 @@ import Signup from './pagesLog/signup';
 function App() {
   return (
   <div className="App"> 
-  
   <Routes>
+  {/* Authorization  */}
+    <Route path='/login' element={<Login />}/>
+    <Route path='/signup' element={<Signup />}/>
   {/* Visitor */}
     <Route path='/' element={<Home />}/>
     <Route path='/projects' element={<Projects />}/>
@@ -30,19 +29,12 @@ function App() {
     <Route path='/volunteer' element={<Volunteer />}/>
   {/* Admin */}
     <Route path='/behind-the-scences' element={<AdminDashboard />} />
-    <Route path='/behind-the-scences/project/create' element={<CreateProject />} />
     <Route path='/behind-the-scences/project/edit/:id' element={<EditProject />} />
     <Route path='/behind-the-scences/project/delete/:id' element={<DeleteProject />} />
-    <Route path='/behind-the-scences/event/create' element={<CreateEvent />} />
     <Route path='/behind-the-scences/event/edit/:id' element={<EditEvent />} />
     <Route path='/behind-the-scences/event/delete/:id' element={<DeleteEvent />} />
-
-    <Route path='/login' element={<Login />}/>
-    <Route path='/signup' element={<Signup />}/>
-
   </Routes>
-
-    </div>
+  </div>
   );
 }
 
