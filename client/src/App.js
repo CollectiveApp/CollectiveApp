@@ -13,8 +13,8 @@ import DeleteProject from './pagesAdmin/DeleteProject';
 import CreateEvent from './pagesAdmin/CreateEvent';
 import EditEvent from './pagesAdmin/EditEvent';
 import DeleteEvent from './pagesAdmin/DeleteEvent';
-import Login from './pages/login'
-import Signup from './pages/signup';
+import Login from './pagesLog/login'
+import Signup from './pagesLog/signup';
 
 
 function App() {
