@@ -22,6 +22,9 @@ app.use("/api", allRoutes);
 const adminRoutes = require('./routes/auth');
 app.use('/api/auth', adminRoutes)
 
+const projectRoute = require('./routes/projects');
+app.use('/api/project', projectRoute)
+
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
