@@ -7,6 +7,7 @@ const { isAuthenticated } = require("../middleware/jwt");
 
 router.post('/signup', (req, res, next)=>{
     const {email, password, name} = req.body
+	console.log('test')
     if(email === '' || password === '' || name === ''){
         res.status(400).json({message: 'email, password and name are required'})
         return
@@ -27,7 +28,7 @@ router.post('/signup', (req, res, next)=>{
         .then(createdAdmin => {
             const {email, name, _id} = createdAdmin
             const Admin = {email, name, _id}
-            res.status(201).json({admin: admin})
+            res.status(201).json({admin: Admin})
 
         })
         .catch(err => {

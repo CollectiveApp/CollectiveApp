@@ -1,22 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { AuthContext } from '../context/auth'
 
-export default function Signup() {
+export default function Login() {
 
-	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [errorMessage, setErrorMessage] = useState(undefined);
 
 	const navigate = useNavigate()
 
+	const { storeToken, verifyStoredToken } = useContext(AuthContext)
+
 	const handleSubmit = e => {
 		e.preventDefault()
-		const requestBody = { email, password, name }
-		axios.post('/api/auth/signup', requestBody)
+		const requestBody = { email, password }
+		axios.post('/api/auth/login', requestBody)
 			.then(response => {
-				// redirect to login
-				navigate('/login')
+				// redirect to projects
+				console.log('we have a token')
+				const token = response.data.authToken
+				// store the token
+				storeToken(token)
+				verifyStoredToken()
+					.then(() => {
+						// redirect to projects
+						navigate('/pagesAdmin/AdminDashboard')
+					})
 			})
 			.catch(err => {
 				const errorDescription = err.response.data.message
@@ -25,29 +36,25 @@ export default function Signup() {
 	}
 
 	const handleEmail = e => setEmail(e.target.value)
-	const handleName = e => setName(e.target.value)
 	const handlePassword = e => setPassword(e.target.value)
-	const [errorMessage, setErrorMessage] = useState(undefined);
 
 	return (
-		<>
+		<> 
             <div>
-			<h1>Signup</h1>
+			<h1>Login</h1>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="email">Email: </label>
 				<input type="text" value={email} onChange={handleEmail} />
 				<label htmlFor="password">Password: </label>
 				<input type="password" value={password} onChange={handlePassword} />
-				<label htmlFor="name">Name: </label>
-				<input type="text" value={name} onChange={handleName} />
-				<button type="submit">Sign Up</button>
+				<button type="submit">Log In</button>
 			</form>
 
 			{errorMessage && <h5>{errorMessage}</h5>}
             </div>
 
-            <div>
-			<Link to='/login'>Login</Link>
+			<div>
+			    <Link to='/signup'>Signup</Link>
             </div>
 		</>
 	)
