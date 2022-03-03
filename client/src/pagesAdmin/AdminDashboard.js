@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import CreateProject from '../components/CreateProject'
 import CreateEvent from '../components/CreateEvent'
@@ -14,15 +14,33 @@ const [showCreateEvent, setShowCreateEvent] = useState(false)
 
 const storedToken = localStorage.getItem('authToken')
 
+const { id } = useParams()
+const navigate = useNavigate()
+
 // Handler
-// const deleteProject = () => {
-//     axios.delete(`/api/projects/${_id}`)
-//         .then(() => {
-//             // redirect to the project list
-//             navigate('/projects')
-//         })
-//         .catch(err => console.log(err))
-// }
+const deleteProject = () => {
+    axios.delete(`/api/projects/${id}`)
+        .then(() => {
+            // redirect to the project list
+            navigate('/projects')
+        })
+        .catch(err => console.log(err))
+}
+
+const handleSubmit = e => {
+    e.preventDeafault()
+    // send the data from the state as a post request to the backend
+		axios.post('/api/projects', {})
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => console.log(err))
+    // reset the form
+    setTitle('')
+    setDescription('')
+    // refresh the list of the projects in ProjectList
+    props.refreshProjects()
+}
 
 // get all the projects from the backend / server
 const getAllProjects = () => {
@@ -66,10 +84,10 @@ useEffect(() => {
             <>
                 <h1>All the projects</h1>
                 {projects.map(project => 
-                                        <>
-                                            <Link to={'/behind-the-scences/project/edit/:id'}>Edit</Link>
-                                            {/* <button onClick={deleteProject}>Delete this project</button> */}
-                                        </>
+                    <>
+                        <Link to={'/behind-the-scences/project/edit/:id'}>Edit</Link>
+                        <button onClick={deleteProject}>Delete this project</button>
+                    </>
                 )}
                 <button onClick={() => setShowCreateProject(!showCreateProject)}>Create Project</button>
                 {showCreateProject && (

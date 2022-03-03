@@ -23,6 +23,7 @@ const [projectDescription, setProjectDescription] = useState('')
         <label>Project Description: </label>
         <input type="text" value={projectDescription}></input>
         {/* file upload img cloudinary */}
+        <button type='submit'>Create Project</button>
     </form>
     </>
   )
