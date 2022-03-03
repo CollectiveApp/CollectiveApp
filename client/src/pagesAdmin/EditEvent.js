@@ -14,6 +14,7 @@ export default function EditProject() {
   const [eventLocation, setEventLocation] = useState('')
   
 	const { id } = useParams()
+	console.log('test')
 
 	const navigate = useNavigate()
 
