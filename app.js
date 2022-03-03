@@ -22,8 +22,13 @@ app.use("/api", allRoutes);
 const adminRoutes = require('./routes/auth');
 app.use('/api/auth', adminRoutes)
 
+
+const projectRoute = require('./routes/projects');
+app.use('/api/project', projectRoute)
+
 const eventsRoutes = require('./routes/events');
 app.use('/api/event', eventsRoutes)
+
 
 
 

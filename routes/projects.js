@@ -5,28 +5,38 @@ const router = require("express").Router();
 // get all projects
 router.get('/', (req, res, next) => {
   Project.find()
-  .then(projects => {
-      res.status(200).json(projects)
+    .then(projects => {
+    res.status(200).json(projects)
   })
 });
 
-// create new project
 // create a project
-router.post('/', (req, res, next) => {
+router.post('/create', (req, res, next) => {
   const { projectName,
           projectLocation,
           projectStartDate,
           projectEndDate,
           projectDescription,
-          projectGallery } = req.body
-  Project.create({ title, description })
+         } = req.body
+  Project.create({ projectName,
+          projectLocation,
+          projectStartDate,
+          projectEndDate,
+          projectDescription,
+           })
     .then(project => {
-      res.status(201).json(project)
+    res.status(201).json(project)
     })
     .catch(err => next(err))
 })
 
-// You put the next routes here 👇
-// example: router.use("/auth", authRoutes)
+// delete a project
+router.delete('/:id', (req, res, next) => {
+  Project.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.status(200).json({ message: 'project deleted' })
+    })
+    .catch(err => next(err))
+});
 
 module.exports = router;

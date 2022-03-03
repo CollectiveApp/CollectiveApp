@@ -5,8 +5,8 @@ const ProjectSchema = new Schema(
   {
     projectName: String,
     projectLocation: String,
-    projectStartDate: Date ,
-    projectEndDate: Date,
+    projectStartDate: String,
+    projectEndDate: String,
     projectDescription: String,
     projectGallery: String 
   },
