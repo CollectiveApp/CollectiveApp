@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { AuthContext } from '../../context/auth'
+import { AuthContext } from '../context/auth'
 
 export default function Login() {
 
@@ -40,7 +40,7 @@ export default function Login() {
 
 	return (
 		<> 
-             <div>
+            <div>
 			<h1>Login</h1>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="email">Email: </label>

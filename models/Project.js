@@ -5,8 +5,8 @@ const ProjectSchema = new Schema(
   {
     projectName: String,
     projectLocation: String,
-    projectStartDate: String ,
-    projectEndDate: String,
+    projectStartDate: Date ,
+    projectEndDate: Date,
     projectDescription: String,
     projectGallery: String 
   },
@@ -19,5 +19,3 @@ const Project = model("Project", ProjectSchema);
 
 module.exports = Project;
 
-//delete this later
-//also delete this one
