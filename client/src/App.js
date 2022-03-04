@@ -7,9 +7,7 @@ import Events from './pagesVisitor/Events'
 import Volunteer from './pagesVisitor/Volunteer'
 import AdminDashboard from './pagesAdmin/AdminDashboard';
 import EditProject from './pagesAdmin/EditProject';
-import DeleteProject from './pagesAdmin/DeleteProject';
 import EditEvent from './pagesAdmin/EditEvent';
-import DeleteEvent from './pagesAdmin/DeleteEvent';
 import Login from './pagesLog/login'
 import Signup from './pagesLog/signup';
 
@@ -30,9 +28,7 @@ function App() {
   {/* Admin */}
     <Route path='/behind-the-scences' element={<AdminDashboard />} />
     <Route path='/behind-the-scences/project/edit/:id' element={<EditProject />} />
-    <Route path='/behind-the-scences/project/delete/:id' element={<DeleteProject />} />
     <Route path='/behind-the-scences/event/edit/:id' element={<EditEvent />} />
-    <Route path='/behind-the-scences/event/delete/:id' element={<DeleteEvent />} />
   </Routes>
   </div>
   );

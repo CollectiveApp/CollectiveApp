@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import CreateProject from '../components/CreateProject'
 import CreateEvent from '../components/CreateEvent'
 import ProjectList from '../components/ProjectList'
@@ -10,10 +9,6 @@ export default function AdminDashboard() {
 const [events, setEvents] = useState([])
 const [showCreateProject, setShowCreateProject] = useState(false)
 const [showCreateEvent, setShowCreateEvent] = useState(false)
-
-
-const storedToken = localStorage.getItem('authToken')
-
 
 // const getAllEvents = () => {
 //     // request 'api/events'
