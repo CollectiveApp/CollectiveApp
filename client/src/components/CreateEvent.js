@@ -18,8 +18,10 @@ export default function CreateEvent(props) {
 		e.preventDefault()
 		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation }
 		axios.post(`/api/events/create`, requestBody)
-			.then(() => {
-			})
+    .then(response => {
+      console.log(response)
+    })
+
 			.catch(err => console.log(err))
       setEventName('')
       setEventDescription('')

@@ -17,7 +17,7 @@ export default function Signup() {
 		axios.post('/api/auth/signup', requestBody)
 			.then(response => {
 				
-				navigate('/pagesAdmin/AdminDashboard')
+				navigate('/behind-the-scences')
 			})
 			.catch(err => {
 				const errorDescription = err.response.data.message
