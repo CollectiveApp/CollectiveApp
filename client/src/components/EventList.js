@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import CreateEvent from './CreateEvent'
+import EditEvent from '../pagesAdmin/EditEvent'
 
 
 export default function EventList() {
@@ -36,7 +37,7 @@ export default function EventList() {
             {events.map(event=>
               <div key={event._id}>
                 <h1>{event.eventName}</h1>
-                <button><Link to={'/behind-the-scences/event/edit/:id'}>Edit</Link></button>
+                <button><Link to={`/behind-the-scences/event/edit/${event._id}`}>Edit</Link></button>
                 <button onClick={()=>{
                     axios.delete(`/api/event/${event._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
                       .then(deletedProject => {
