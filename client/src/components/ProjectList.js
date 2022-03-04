@@ -38,7 +38,7 @@ useEffect(() => {getAllProjects()}, [])
         {projects.map(project =>
                 <div key={project._id}>
                   <h1>{project.projectName}</h1>
-                  <Link to={'/behind-the-scences/project/edit/:id'}>Edit this Project</Link>
+                  <button><Link to={`/behind-the-scences/project/edit/${project._id}`}>Edit this Project</Link></button>
                   <button onClick={()=>{
                     axios.delete(`/api/project/${project._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
                       .then(deletedProject => {
