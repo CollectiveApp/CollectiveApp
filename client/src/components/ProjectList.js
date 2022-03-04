@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import CreateProject from './CreateProject'
+import PopUpEditProject from './PopUpEditProject'
+import EditProject from '../pagesAdmin/EditProject'
 
 
 export default function ProjectList(props){
 // State of Projects
 const [projects, setProjects] = useState([])
 const [showCreateProject, setShowCreateProject] = useState(false)
-console.log('projects', projects)
+const [showPopUp, setShowPopUp] = useState(false)
 
 const storedToken = localStorage.getItem('authToken')
-
+// Handle PopUp
+const togglePopUp = () => {setShowPopUp(!showPopUp)}
 // get all projects from the backend
 const getAllProjects = () => {
   // request 'api/projects'
@@ -38,6 +41,11 @@ useEffect(() => {getAllProjects()}, [])
         {projects.map(project =>
                 <div key={project._id}>
                   <h1>{project.projectName}</h1>
+                  <button onClick={togglePopUp}>Edit PopUp</button>
+                    {showPopUp && <PopUpEditProject
+                    content={<EditProject />}
+                    handleClose={togglePopUp}/>
+                    }
                   <button><Link to={`/behind-the-scences/project/edit/${project._id}`}>Edit this Project</Link></button>
                   <button onClick={()=>{
                     axios.delete(`/api/project/${project._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })

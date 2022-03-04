@@ -40,11 +40,32 @@ router.delete('/:id', (req, res, next) => {
     .catch(err => next(err))
 });
 
+
+//get specific project
+router.get('/:id', (req, res, next) => {
+  Project.findById(req.params.id)
+    .then(project => {
+      if (!project) {
+        res.status(404).json(project)
+      } else {
+        res.status(200).json(project)
+      }
+    })
+    .catch(err => next(err))
+});
 // edit a project
 router.put('/:id', (req, res, next) => {
-  const { projectName } = req.body
+  const { projectName, 
+          projectLocation, 
+          projectStartDate, 
+          projectEndDate, 
+          projectDescription } = req.body
   Project.findByIdAndUpdate(req.params.id, {
-    projectName,
+          projectName,
+          projectLocation, 
+          projectStartDate, 
+          projectEndDate, 
+          projectDescription
   }, { new: true })
     .then(updatedProject => {
       res.status(200).json(updatedProject)

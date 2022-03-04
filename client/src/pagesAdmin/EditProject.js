@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-export default function EditProject() {
+export default function EditProject(props) {
   // States
   const [projectName, setProjectName] = useState('')
+  const [projectLocation, setProjectLocation] = useState('')
+  const [projectStartDate, setProjectStartDate] = useState('')
+  const [projectEndDate, setProjectEndDate] = useState('')
+  const [projectDescription, setProjectDescription] = useState('')
   
   // take id from Params to query for specific element from db to edit it
   const { id } = useParams()
   // console.log(id)
+  console.log(props.id)
+
+  const navigate = useNavigate()
 
   // where to change the data gained from edit
   const handleEdit = e => {
     e.preventDefault()
-		const requestBody = { projectName }
-		axios.put(`/api/project/${id}`, requestBody)
+		const requestBody = { projectName, projectLocation, projectStartDate, projectEndDate, projectDescription }
+		axios.put(`/api/project/${props.id}`, requestBody)
 			.then(() => {
 				// this redirects using react router
-				// navigate(`/projects/${id}`)
+				navigate(`/behind-the-scences/project/edit/${id}`)
 			})
 			.catch(err => console.log(err))
 	}
@@ -25,12 +32,20 @@ export default function EditProject() {
   const storedToken = localStorage.getItem('authToken')
 
   // get specific project from backend to edit it
-  const getProjectToEdit = () =>{
-		axios.get(`/api/project/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+  const getProjectToEdit = () => {
+		axios.get(`/api/project/${props.id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
-				const { projectName } = response.data
-        console.log('response.data', response.data)
+        const { projectName } = response.data
+        const { projectLocation } = response.data
+        const { projectStartDate } = response.data
+        const { projectEndDate } = response.data
+        const { projectDescription } = response.data
+        // console.log('response.data.edit', response.data)
           setProjectName(projectName)
+          setProjectLocation(projectLocation)
+          setProjectStartDate(projectStartDate)
+          setProjectEndDate(projectEndDate)
+          setProjectDescription(projectDescription)
 			})
 			.catch(err => console.log(err))
   }
@@ -40,9 +55,17 @@ export default function EditProject() {
   return (
     <>
        <div>EditProject</div>
-       <form>
-         <label>Project Name: </label>
-         <input type="text" value={projectName} onChange={handleEdit}/>
+       <form onSubmit={handleEdit}>
+         <label>Projectname: </label>
+         <input id="projectName" type="text" value={projectName} onChange={e => setProjectName(e.target.value)}/>
+         <label>Location: </label>
+         <input id="projectLocation" type="text" value={projectLocation} onChange={e => setProjectLocation(e.target.value)}/>
+         <label>Start Date: </label>
+         <input id="projectStartDate" type="text" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}/>
+         <label>End Date: </label>
+         <input id="projectEndDate" type="text" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}/>
+         <label>Description: </label>
+         <input id="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
          <button type='submit'>Save Changes</button>
        </form>
     </>

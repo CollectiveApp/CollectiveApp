@@ -1,15 +1,8 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import ProjectList from '../components/ProjectList'
 import EventList from '../components/EventList'
 
 export default function AdminDashboard() {
-
-
-const [events, setEvents] = useState([])
-const [showCreateProject, setShowCreateProject] = useState(false)
-const [showCreateEvent, setShowCreateEvent] = useState(false)
-
 
   return (
     <>
