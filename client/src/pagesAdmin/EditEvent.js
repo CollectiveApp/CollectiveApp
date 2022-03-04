@@ -19,21 +19,21 @@ export default function EditProject() {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation }
-		axios.put(`/api/events/${id}`, requestBody)
+		axios.put(`/api/event/${id}`, requestBody)
 			.then(() => {
 			})
 			.catch(err => console.log(err))
 	}
 
 	const deleteEvent = () => {
-		axios.delete(`/api/events/${id}`)
+		axios.delete(`/api/event/${id}`)
 			.then(() => {
 			})
 			.catch(err => console.log(err))
 	}
 
 	useEffect(() => {
-		axios.get(`/api/events/${id}`)
+		axios.get(`/api/event/${id}`)
 			.then(response => {
 				const { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation } = response.data
 				setEventName(eventName)
