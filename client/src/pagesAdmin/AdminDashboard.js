@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import CreateProject from '../components/CreateProject'
-import CreateEvent from '../components/CreateEvent'
 import ProjectList from '../components/ProjectList'
 import EventList from '../components/EventList'
 

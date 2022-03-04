@@ -26,7 +26,7 @@ export default function Login() {
 				verifyStoredToken()
 					.then(() => {
 						// redirect to projects
-						navigate('/pagesAdmin/AdminDashboard')
+						navigate('/behind-the-scences')
 					})
 			})
 			.catch(err => {
