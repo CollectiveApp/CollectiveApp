@@ -12,6 +12,8 @@ export default function EditProject() {
   const [eventType, setEventType] = useState('')
   const [eventPicture, setEventPicture] = useState('')
   const [eventLocation, setEventLocation] = useState('')
+  const [outdoors, setOutdoors] = useState(false)
+  
   
 	const { id } = useParams()
 	console.log('test')
@@ -49,9 +51,14 @@ export default function EditProject() {
         setEventType(eventType)
         setEventPicture(eventPicture)
         setEventLocation(eventLocation)
+		setOutdoors(false)
 			})
 			.catch(err => console.log(err))
 	}, [])
+
+	
+
+    const handleCheckBox = e => setOutdoors(e.target.value)
 
 	return (
 		<>
@@ -109,6 +116,10 @@ export default function EditProject() {
 
 				<button type="submit">Update this project</button>
 			</form>
+			<div>
+            Outdoor
+            <input type="checkBox" value={outdoors} onChange={handleCheckBox}/>
+        	</div>
 			<button onClick={deleteEvent}>Delete this project</button>
 		</>
 

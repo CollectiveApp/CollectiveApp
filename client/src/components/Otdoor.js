@@ -2,8 +2,6 @@
 import React, {useState} from 'react'
 
 
-
-
 export default function Outdoor() {
     const [outdoors, setOutdoors] = useState(false)
 

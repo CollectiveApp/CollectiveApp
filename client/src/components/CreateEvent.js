@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-export default function CreateEvent() {
+export default function CreateEvent(props) {
 
   const [eventName, setEventName] = useState('');
   const [eventDescription, setEventDescription] = useState('');
@@ -17,12 +17,21 @@ export default function CreateEvent() {
   const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation }
-		axios.post(`/api/events/${id}`, requestBody)
+		axios.post(`/api/events/create`, requestBody)
 			.then(() => {
 				// this redirects using react router
 				navigate(`/behind-the-scences`)
 			})
 			.catch(err => console.log(err))
+      setEventName('')
+      setEventDescription('')
+      setEventDate('')
+      setEventTime('')
+      setEventType('')
+      setEventLocation('')
+      setEventPicture('')
+
+      props.refreshProjects()
 	}
 
 
@@ -36,7 +45,6 @@ export default function CreateEvent() {
 
   return (
     <>
-    <div>Create Event</div>
     <form onSubmit={handleSubmit}>
         <label htmlFor='Name'>Name</label>
         <input type="text" value={eventName} onChange={handleEventName}></input>
