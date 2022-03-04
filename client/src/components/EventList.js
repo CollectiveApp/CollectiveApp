@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import CreateEvent from './CreateEvent'
-import EditEvent from '../pagesAdmin/EditEvent'
+
 
 
 export default function EventList() {
@@ -15,7 +15,8 @@ export default function EventList() {
     
     //get events from backend
     const getAllEvents =() => {
-      axios.get('/api/event/', {headers: {Authorization: `Bearer ${storedToken}`}})
+
+      axios.get(`${API_URL}/api/event/`, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then(response => {
         console.log('response.data',response.data)
         setEvents(response.data)

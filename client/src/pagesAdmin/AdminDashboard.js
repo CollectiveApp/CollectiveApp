@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ProjectList from '../components/ProjectList'
 import EventList from '../components/EventList'
+import Navbar from '../components/NavBar'
 
 export default function AdminDashboard() {
 
@@ -12,6 +13,7 @@ const [showCreateEvent, setShowCreateEvent] = useState(false)
 
   return (
     <>
+    
         <h1>Welcome to your Dashboard!</h1>
         <div>
             <>
