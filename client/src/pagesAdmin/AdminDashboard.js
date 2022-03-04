@@ -7,7 +7,6 @@ import ProjectList from '../components/ProjectList'
 export default function AdminDashboard() {
 
 const [events, setEvents] = useState([])
-const [showCreateProject, setShowCreateProject] = useState(false)
 const [showCreateEvent, setShowCreateEvent] = useState(false)
 
 // const getAllEvents = () => {
@@ -31,10 +30,6 @@ const [showCreateEvent, setShowCreateEvent] = useState(false)
         <div>
             <>
             <h1>Projects</h1>
-            <button onClick={() => setShowCreateProject(!showCreateProject)}>Create Project</button>
-                {showCreateProject && (
-                <CreateProject />
-                )}
             <div>
                 <ProjectList />
             </div>
