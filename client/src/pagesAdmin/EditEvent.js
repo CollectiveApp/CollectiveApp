@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-
-
+import { useParams } from 'react-router-dom'
 export default function EditProject() {
 
 	const [eventName, setEventName] = useState('');
@@ -18,15 +16,11 @@ export default function EditProject() {
 	const { id } = useParams()
 	console.log('test')
 
-	const navigate = useNavigate()
-
 	const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation }
 		axios.put(`/api/events/${id}`, requestBody)
 			.then(() => {
-				// this redirects using react router
-				navigate(`/event/${id}`)
 			})
 			.catch(err => console.log(err))
 	}
@@ -34,8 +28,6 @@ export default function EditProject() {
 	const deleteEvent = () => {
 		axios.delete(`/api/events/${id}`)
 			.then(() => {
-				// redirect to the event list
-				navigate('/behind-the-scences')
 			})
 			.catch(err => console.log(err))
 	}

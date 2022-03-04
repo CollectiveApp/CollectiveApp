@@ -9,13 +9,11 @@ export default function Outdoor() {
 
     return(
         <>
-        
         <div>
             Outdoor
             <input type="checkBox" onChange={handleCheckBox}/>
         </div>
         </>
-
     )
 }
 
