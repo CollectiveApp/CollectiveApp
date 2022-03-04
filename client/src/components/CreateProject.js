@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 
-export default function CreateProject() {
+export default function CreateProject(props) {
 
 const [projectName, setProjectName] = useState('')
 const [projectLocation, setProjectLocation] = useState('')
@@ -24,12 +24,14 @@ const handleSubmit = e => {
             console.log(response)
         })
         .catch(err => console.log(err))
-    // reset the form
+    // reset the state
     setProjectName('')
     setProjectLocation('')
     setProjectStartDate('')
     setProjectEndDate('')
     setProjectDescription('')
+    // actualize the projects rendered
+    props.refreshProjects()
 }
 
     return (
@@ -39,9 +41,9 @@ const handleSubmit = e => {
         <label>Location: </label>
         <input id="projectLocation" name="projectLocation"  type="text" value={projectLocation} onChange={e => setProjectLocation(e.target.value)}></input>
         <label>Project Start: </label>
-        <input id="projectStartDate" name="projectStartDate"  type="text" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)} placeholder="DD.MM.YY"></input>
+        <input id="projectStartDate" name="projectStartDate"  type="date" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}></input>
         <label>Project End: </label>
-        <input id="projectEndDate" name="projectEndDate" type="text" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)} placeholder="DD.MM.YY"></input>
+        <input id="projectEndDate" name="projectEndDate" type="date" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}></input>
         <label>Project Description: </label>
         <input id="projectDescription" name="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}></input>
         {/* file upload img cloudinary */}

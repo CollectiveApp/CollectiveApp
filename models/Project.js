@@ -8,7 +8,7 @@ const ProjectSchema = new Schema(
     projectStartDate: String,
     projectEndDate: String,
     projectDescription: String,
-    projectGallery: String 
+    projectGallery: String
   },
   {
     timestamps: true,
