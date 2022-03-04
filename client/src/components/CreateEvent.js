@@ -19,8 +19,6 @@ export default function CreateEvent(props) {
 		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation }
 		axios.post(`/api/events/create`, requestBody)
 			.then(() => {
-				// this redirects using react router
-				navigate(`/behind-the-scences`)
 			})
 			.catch(err => console.log(err))
       setEventName('')
