@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import CreateProject from './CreateProject'
 import PopUpEditProject from './PopUpEditProject'
+import PopUpCreateProject from './PopUpCreateProject'
 
 
 export default function ProjectList(props){
@@ -37,7 +36,7 @@ useEffect(() => {getAllProjects()}, [])
       <>
       <button onClick={() => setShowCreateProject(!showCreateProject)}>Create Project</button>
                 {showCreateProject && (
-                  <CreateProject refreshProjects={getAllProjects} />
+                  <PopUpCreateProject refreshProjects={getAllProjects} handleClose={() => setShowCreateProject(false)}/>
                 )}
       
         {projects.map(project => {
@@ -45,11 +44,10 @@ useEffect(() => {getAllProjects()}, [])
                 <>
                 <div key={project._id}>
                   <h1>{project.projectName}</h1>
-                  <button onClick={() => {handleProjectToBeEdited(project)}}>Edit PopUp</button>
+                  <button onClick={() => {handleProjectToBeEdited(project)}}>Edit</button>
                     {projectToBeEdited && <PopUpEditProject
                     handleClose={() => {setProjectToBeEdited(null)}} thisproject={projectToBeEdited} refreshProjects={getAllProjects}/>
                     }
-                  <button><Link to={`/behind-the-scences/project/edit/${project._id}`}>Edit this Project</Link></button>
                   <button onClick={()=>{
                     axios.delete(`/api/project/${project._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
                       .then(deletedProject => {
@@ -58,7 +56,7 @@ useEffect(() => {getAllProjects()}, [])
                         getAllProjects();
                         })
                       .catch(err => console.log(err))
-                  }}>Delete this Project</button>
+                  }}>Delete</button>
                 </div>
                 </>)}
                 )}
