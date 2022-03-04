@@ -18,7 +18,8 @@ router.post('/create', (req, res, next) => {
           projectEndDate,
           projectDescription,
          } = req.body
-  Project.create({ projectName,
+  Project.create({ 
+          projectName,
           projectLocation,
           projectStartDate,
           projectEndDate,
@@ -38,5 +39,18 @@ router.delete('/:id', (req, res, next) => {
     })
     .catch(err => next(err))
 });
+
+// edit a project
+router.put('/:id', (req, res, next) => {
+  const { projectName } = req.body
+  Project.findByIdAndUpdate(req.params.id, {
+    projectName,
+  }, { new: true })
+    .then(updatedProject => {
+      res.status(200).json(updatedProject)
+    })
+    .catch(err => next(err))
+});
+
 
 module.exports = router;
