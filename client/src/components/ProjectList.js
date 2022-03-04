@@ -3,18 +3,20 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import CreateProject from './CreateProject'
 import PopUpEditProject from './PopUpEditProject'
-import EditProject from '../pagesAdmin/EditProject'
 
 
 export default function ProjectList(props){
 // State of Projects
 const [projects, setProjects] = useState([])
 const [showCreateProject, setShowCreateProject] = useState(false)
-const [showPopUp, setShowPopUp] = useState(false)
+const [projectToBeEdited, setProjectToBeEdited] = useState(null)
 
 const storedToken = localStorage.getItem('authToken')
 // Handle PopUp
-const togglePopUp = () => {setShowPopUp(!showPopUp)}
+const handleProjectToBeEdited = project => {
+  console.log('project', project)
+  setProjectToBeEdited(project)}
+
 // get all projects from the backend
 const getAllProjects = () => {
   // request 'api/projects'
@@ -38,13 +40,14 @@ useEffect(() => {getAllProjects()}, [])
                   <CreateProject refreshProjects={getAllProjects} />
                 )}
       
-        {projects.map(project =>
+        {projects.map(project => {
+                return (
+                <>
                 <div key={project._id}>
                   <h1>{project.projectName}</h1>
-                  <button onClick={togglePopUp}>Edit PopUp</button>
-                    {showPopUp && <PopUpEditProject
-                    content={<EditProject />}
-                    handleClose={togglePopUp}/>
+                  <button onClick={() => {handleProjectToBeEdited(project)}}>Edit PopUp</button>
+                    {projectToBeEdited && <PopUpEditProject
+                    handleClose={() => {setProjectToBeEdited(null)}} thisproject={projectToBeEdited} refreshProjects={getAllProjects}/>
                     }
                   <button><Link to={`/behind-the-scences/project/edit/${project._id}`}>Edit this Project</Link></button>
                   <button onClick={()=>{
@@ -57,6 +60,7 @@ useEffect(() => {getAllProjects()}, [])
                       .catch(err => console.log(err))
                   }}>Delete this Project</button>
                 </div>
+                </>)}
                 )}
       </>
     )  

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function EditProject(props) {
@@ -10,21 +9,19 @@ export default function EditProject(props) {
   const [projectEndDate, setProjectEndDate] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
   
-  // take id from Params to query for specific element from db to edit it
-  const { id } = useParams()
-  // console.log(id)
-  console.log(props.id)
-
-  const navigate = useNavigate()
+  // console.log('specificprojectprops', props)
+  // // // take id from Params to query for specific element from db to edit it
+  // // const { id } = useParams()
+  // // // console.log(id)
 
   // where to change the data gained from edit
   const handleEdit = e => {
     e.preventDefault()
 		const requestBody = { projectName, projectLocation, projectStartDate, projectEndDate, projectDescription }
-		axios.put(`/api/project/${props.id}`, requestBody)
+		axios.put(`/api/project/${props.specificproject._id}`, requestBody)
 			.then(() => {
-				// this redirects using react router
-				navigate(`/behind-the-scences/project/edit/${id}`)
+        // actualize the projects rendered
+        props.refreshProjects()
 			})
 			.catch(err => console.log(err))
 	}
@@ -33,8 +30,9 @@ export default function EditProject(props) {
 
   // get specific project from backend to edit it
   const getProjectToEdit = () => {
-		axios.get(`/api/project/${props.id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
-			.then(response => {
+		axios.get(`/api/project/${props.specificproject._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+    .then(response => {
+      console.log('axiosgetproject', response.data);	
         const { projectName } = response.data
         const { projectLocation } = response.data
         const { projectStartDate } = response.data
