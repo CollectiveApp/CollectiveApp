@@ -4,6 +4,7 @@ const Admin = require('../models/Admin')
 const jwt = require('jsonwebtoken');
 const { isAuthenticated } = require("../middleware/jwt");
 
+const saltRounds = 10;
 
 router.post('/signup', (req, res, next)=>{
     const {email, password, name} = req.body
@@ -12,10 +13,17 @@ router.post('/signup', (req, res, next)=>{
         res.status(400).json({message: 'email, password and name are required'})
         return
     }
-    if (password.length < 6){
-        res.status(400).json({message: 'Password should be at least six characters'})
-        return
-    }
+    // const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  	// if (!passwordRegex.test(password)) {
+    // res.status(400).json({ message: 'Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter.' });
+    // return;
+  	// }
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  	if (!emailRegex.test(email)) {
+   		res.status(400).json({ message: 'Provide a valid email address.' });
+    return;
+  	}
+
     Admin.findOne({email})
     .then(foundAdmin => {
         if(foundAdmin){
@@ -59,7 +67,7 @@ router.post('/login', (req, res, next) => {
 				const authToken = jwt.sign(
 					payload,
 					process.env.JWT_SECRET,
-					{ algorithm: 'HS256', expiresIn: '12h' }
+					{ algorithm: 'HS256', expiresIn: '6h' }
 				)
 				res.status(200).json({ authToken })
 			} else {
@@ -72,10 +80,16 @@ router.post('/login', (req, res, next) => {
 		})
 });
 
-router.get('/verify', isAuthenticated, (req, res, next) => {
-	// if the token is valid we can access it on : req.payload
-	console.log('request payload is: ', req.payload)
-	res.status(200).json(req.payload)
-});
+// GET  /auth/verify  -  Used to verify JWT stored on the client
+router.get('/verify', isAuthenticated, (req, res, next) => {       
+ 
+	// If JWT token is valid the payload gets decoded by the
+	// isAuthenticated middleware and made available on `req.payload`
+	console.log(`req.payload`, req.payload);
+   
+	// Send back the object with user data
+	// previously set as the token payload
+	res.status(200).json(req.payload);
+  });
 
 module.exports = router;
