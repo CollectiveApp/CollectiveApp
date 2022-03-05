@@ -10,6 +10,7 @@ import EditProject from './pagesAdmin/EditProject';
 import EditEvent from './pagesAdmin/EditEvent';
 import Login from './pagesLog/login'
 import Signup from './pagesLog/signup';
+import IsPrivate from './components/IsPrivate';
 
 
 function App() {
@@ -26,9 +27,9 @@ function App() {
     <Route path='/events' element={<Events />}/>
     <Route path='/volunteer' element={<Volunteer />}/>
   {/* Admin */}
-    <Route path='/behind-the-scences' element={<AdminDashboard />} />
-    <Route path='/behind-the-scences/project/edit/:id' element={<EditProject />} />
-    <Route path='/behind-the-scences/event/edit/:id' element={<EditEvent />} />
+    <Route path='/behind-the-scences' element={<IsPrivate> <AdminDashboard /> </IsPrivate>} />
+    <Route path='/behind-the-scences/project/edit/:id' element={<IsPrivate> <EditProject /> </IsPrivate>} />
+    <Route path='/behind-the-scences/event/edit/:id' element={<IsPrivate> <EditEvent /> </IsPrivate>} />
   </Routes>
   </div>
   );

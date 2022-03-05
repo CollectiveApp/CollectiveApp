@@ -17,7 +17,7 @@ export default function CreateEvent(props) {
   const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation }
-		axios.post(`/api/events/create`, requestBody)
+		axios.post(`${API_URL}/api/event/create`, requestBody)
     .then(response => {
       console.log(response)
     })
@@ -31,7 +31,7 @@ export default function CreateEvent(props) {
       setEventLocation('')
       setEventPicture('')
 
-      props.refreshProjects()
+      props.refreshEvents()
 	}
 
 
