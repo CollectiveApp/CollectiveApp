@@ -10,7 +10,7 @@ const [projectLocation, setProjectLocation] = useState('')
 const [projectStartDate, setProjectStartDate] = useState('')
 const [projectEndDate, setProjectEndDate] = useState('')
 const [projectDescription, setProjectDescription] = useState('')
-const [projectImageUrl, setProjectImageUrl] = useState('');
+const [projectImageUrl, setProjectImageUrl] = useState([]);
 
 const handleSubmit = e => {
     e.preventDefault()
@@ -33,7 +33,7 @@ const handleSubmit = e => {
     setProjectStartDate('')
     setProjectEndDate('')
     setProjectDescription('')
-    setProjectImageUrl('')
+    setProjectImageUrl([])
     // actualize the projects rendered
     props.refreshProjects()
 }
