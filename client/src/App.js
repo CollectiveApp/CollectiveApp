@@ -11,11 +11,13 @@ import EditEvent from './pagesAdmin/EditEvent';
 import Login from './pagesLog/login'
 import Signup from './pagesLog/signup';
 import IsPrivate from './components/IsPrivate';
+import Navbar from './components/NavBar';
 
 
 function App() {
   return (
   <div className="App"> 
+  <Navbar />
   <Routes>
   {/* Authorization  */}
     <Route path='/login' element={<Login />}/>
