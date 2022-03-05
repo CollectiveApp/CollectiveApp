@@ -5,12 +5,6 @@ import Navbar from '../components/NavBar'
 
 export default function AdminDashboard() {
 
-
-const [events, setEvents] = useState([])
-const [showCreateProject, setShowCreateProject] = useState(false)
-const [showCreateEvent, setShowCreateEvent] = useState(false)
-
-
   return (
     <>
     
