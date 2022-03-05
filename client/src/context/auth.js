@@ -26,7 +26,7 @@ function AuthProviderWrapper(props) {
 
 
 
-	const verifyStoredToken = () => {
+	const authenticateAdmin = () => {
 		// check local storage
 		const storedToken = localStorage.getItem('authToken')
 		if (storedToken) {
@@ -53,12 +53,12 @@ function AuthProviderWrapper(props) {
 
 	useEffect(() => {
 		// check if we have an auth token stored
-		verifyStoredToken()
+		authenticateAdmin()
 		authenticateAdmin()
 	}, [])
 
 	return (
-		<AuthContext.Provider value={{ isLoggedIn, admin, isLoading, storeToken, authenticateAdmin, verifyStoredToken, logoutAdmin }}>
+		<AuthContext.Provider value={{ isLoggedIn, admin, isLoading, storeToken, authenticateAdmin, logoutAdmin }}>
 			{props.children}
 		</AuthContext.Provider>
 	)
