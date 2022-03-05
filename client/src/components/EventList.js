@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import CreateEvent from './CreateEvent'
+import PopupCreateEvent from './PopupCreateEvent'
+import PopupEditEvent from './PopUpEditEvent'
+
 
 
 
@@ -9,9 +10,14 @@ export default function EventList() {
     
     const [events, setEvents] = useState([])
     const [showCreateEvent, setShowCreateEvent] = useState(false)
+    const [eventToEdit, setEventToEdit] = useState(null)
     
     const storedToken = localStorage.getItem('authToken')
     
+    //popup handle
+    const handlePopupEdit = event => {
+      setEventToEdit(event)
+    }
     
     //get events from backend
     const getAllEvents =() => {
@@ -33,12 +39,15 @@ export default function EventList() {
         <>
             <button onClick={()=> setShowCreateEvent(!showCreateEvent)}>CreateEvent</button>
             {showCreateEvent && (
-                <CreateEvent refreshEvents={getAllEvents}/>
+                <PopupCreateEvent refreshEvents={getAllEvents} handleClose={() => setShowCreateEvent(false)}/>
             )}
             {events.map(event=>
               <div key={event._id}>
                 <h1>{event.eventName}</h1>
-                <button><Link to={`/behind-the-scences/event/edit/${event._id}`}>Edit</Link></button>
+                <button onClick={()=> {handlePopupEdit(event)}}>Edit</button>
+                  {eventToEdit && <PopupEditEvent
+                  handleClose={() => {setEventToEdit(null)}} thisevent={eventToEdit} refreshEvents={getAllEvents}/>
+                  }
                 <button onClick={()=>{
                     axios.delete(`/api/event/${event._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
                       .then(deletedProject => {
