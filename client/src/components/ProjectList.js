@@ -41,7 +41,6 @@ useEffect(() => {getAllProjects()}, [])
       
         {projects.map(project => {
                 return (
-                <>
                 <div key={project._id}>
                   <h1>{project.projectName}</h1>
                   <button onClick={() => {handleProjectToBeEdited(project)}}>Edit</button>
@@ -58,7 +57,7 @@ useEffect(() => {getAllProjects()}, [])
                       .catch(err => console.log(err))
                   }}>Delete</button>
                 </div>
-                </>)}
+                )}
                 )}
       </>
     )  

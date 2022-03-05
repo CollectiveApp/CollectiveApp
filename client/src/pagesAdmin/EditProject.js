@@ -59,9 +59,9 @@ export default function EditProject(props) {
          <label>Location: </label>
          <input id="projectLocation" type="text" value={projectLocation} onChange={e => setProjectLocation(e.target.value)}/>
          <label>Start Date: </label>
-         <input id="projectStartDate" type="text" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}/>
+         <input id="projectStartDate" type="date" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}/>
          <label>End Date: </label>
-         <input id="projectEndDate" type="text" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}/>
+         <input id="projectEndDate" type="date" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}/>
          <label>Description: </label>
          <input id="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
          <button type='submit'>Save Changes</button>
