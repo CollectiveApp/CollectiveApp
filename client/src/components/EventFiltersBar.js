@@ -9,7 +9,10 @@ export default function EvetntFiltersBar (){
     const [query, setQuery] = useState('')
     const [events, setEvents] = useState('')
 
-    
+    const filteredDateEvents = () =>{
+        events.filter(
+        )
+    }
 
     return(
         <>
