@@ -28,13 +28,13 @@ useEffect(() => {getAllProjects()}, [])
 
     return(
       <>     
+        <div><h1>Upcoming Projects</h1></div>
         {projects.map(project => {
             return (
                 <div key={project._id}>
                   <h1>{project.projectName}</h1>
-                  <h3>{project.projectLocation}</h3>
-                  <h3>{project.projectStartDate}</h3>
-                  <h3>{project.projectEndDate}</h3>
+                  <h2>{project.projectLocation}</h2>
+                  <h3>{project.projectStartDate} - {project.projectEndDate}</h3>
                   <Link to={`/projects/${project._id}`}>Details & Volunteer</Link>
                 </div>
             )
