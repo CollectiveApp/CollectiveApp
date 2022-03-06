@@ -12,6 +12,7 @@ import Login from './pagesLog/login'
 import Signup from './pagesLog/signup';
 import IsPrivate from './components/IsPrivate';
 import Navbar from './components/NavBar';
+import EventsVisitors from './components/EventsVisitors';
 
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
     <Route path='/' element={<Home />}/>
     <Route path='/projects' element={<Projects />}/>
     <Route path='/projects/:id' element={<ProjectDetails />}/>
-    <Route path='/events' element={<Events />}/>
+    <Route path='/events' element={<EventsVisitors />}/>
+    <Route path='/events/:id' element={<EventDetails />}/>
     <Route path='/volunteer' element={<Volunteer />}/>
   {/* Admin */}
     <Route path='/behind-the-scences' element={<IsPrivate> <AdminDashboard /> </IsPrivate>} />
