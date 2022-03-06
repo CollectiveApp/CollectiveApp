@@ -3,13 +3,14 @@ const { Schema, model } = require("mongoose");
 
 const VolunteerSchema = new Schema(
   {
+    pictureUrl: String,
     firstName: {
         type: String,
         required: true},
     lastName: {
         type: String,
         required: true},
-        address: {
+    address: {
             street: String,        
             city: String,       
             zip: String
@@ -33,7 +34,10 @@ const VolunteerSchema = new Schema(
         timeFrom: String,
         timeTo: String
     },
-    experience: String,
+    experience: {
+        type: String,
+        required: true
+    },
     tools: String,
     personalMessage: String
   }
