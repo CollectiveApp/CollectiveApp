@@ -59,13 +59,15 @@ router.put('/:id', (req, res, next) => {
           projectLocation, 
           projectStartDate, 
           projectEndDate, 
-          projectDescription} = req.body
+          projectDescription,
+          projectSkillsNeeded} = req.body
   Project.findByIdAndUpdate(req.params.id, {
           projectName,
           projectLocation, 
           projectStartDate, 
           projectEndDate, 
-          projectDescription
+          projectDescription,
+          projectSkillsNeeded
   }, { new: true })
     .then(updatedProject => {
       res.status(200).json(updatedProject)

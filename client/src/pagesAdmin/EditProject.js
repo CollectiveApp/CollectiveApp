@@ -9,12 +9,13 @@ export default function EditProject(props) {
   const [projectStartDate, setProjectStartDate] = useState('')
   const [projectEndDate, setProjectEndDate] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
+  const [projectSkillsNeeded, setProjectSkillsNeeded] = useState('')
   const [projectImageUrl, setProjectImageUrl] = useState('');
 
   // where to change the data gained from edit
   const handleEdit = e => {
     e.preventDefault()
-		const requestBody = { projectName, projectLocation, projectStartDate, projectEndDate, projectDescription, projectImageUrl }
+		const requestBody = { projectName, projectLocation, projectStartDate, projectEndDate, projectDescription, projectSkillsNeeded, projectImageUrl }
 		axios.put(`/api/project/${props.specificproject._id}`, requestBody)
 			.then(() => {
         // actualize the projects rendered
@@ -47,12 +48,14 @@ export default function EditProject(props) {
         const { projectStartDate } = response.data
         const { projectEndDate } = response.data
         const { projectDescription } = response.data
+        const { projectSkillsNeeded } = response.data
         // console.log('response.data.edit', response.data)
           setProjectName(projectName)
           setProjectLocation(projectLocation)
           setProjectStartDate(projectStartDate)
           setProjectEndDate(projectEndDate)
           setProjectDescription(projectDescription)
+          setProjectSkillsNeeded(projectSkillsNeeded)
 			})
 			.catch(err => console.log(err))
   }
@@ -73,6 +76,8 @@ export default function EditProject(props) {
         <input id="projectEndDate" type="date" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}/>
         <label>Description: </label>
         <input id="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
+        <label>Looking For: </label>
+        <input id="projectSkillsNeeded" type="text" value={projectSkillsNeeded} onChange={e => setProjectSkillsNeeded(e.target.value)}/>
         {/* file upload img cloudinary */}
         <div>
             <h2>Upload images</h2>
