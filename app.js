@@ -29,7 +29,8 @@ app.use('/api/project', projectRoute)
 const eventsRoutes = require('./routes/events');
 app.use('/api/event', eventsRoutes)
 
-
+const volunteerRoutes = require('./routes/volunteers');
+app.use('/api/volunteer', volunteerRoutes)
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
