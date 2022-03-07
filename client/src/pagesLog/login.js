@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../context/auth'
 
+const API_URL = 'http://localhost:5005';
+
 export default function Login() {
 
 	const [email, setEmail] = useState('');
@@ -11,27 +13,26 @@ export default function Login() {
 
 	const navigate = useNavigate()
 
-	const { storeToken, verifyStoredToken } = useContext(AuthContext)
+	const { storeToken, authenticateAdmin } = useContext(AuthContext)
 
 	const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { email, password }
-		axios.post('/api/auth/login', requestBody)
+		axios.post(`/api/auth/login`, requestBody)
 			.then(response => {
-				// redirect to projects
+				
 				console.log('we have a token')
 				const token = response.data.authToken
 				// store the token
 				storeToken(token)
-				verifyStoredToken()
+				authenticateAdmin()
 					.then(() => {
 						// redirect to projects
 						navigate('/behind-the-scences')
 					})
 			})
 			.catch(err => {
-				const errorDescription = err.response.data.message
-				setErrorMessage(errorDescription)
+				console.log(err)
 			})
 	}
 
@@ -43,10 +44,18 @@ export default function Login() {
             <div>
 			<h1>Login</h1>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="email">Email: </label>
-				<input type="text" value={email} onChange={handleEmail} />
+				<label htmlFor="email">Email </label>
+				<input
+					type="text"
+					name='email'
+					value={email}
+					onChange={handleEmail} />
 				<label htmlFor="password">Password: </label>
-				<input type="password" value={password} onChange={handlePassword} />
+				<input
+					type="password"
+					name='password'
+					value={password}
+					onChange={handlePassword} />
 				<button type="submit">Log In</button>
 			</form>
 
@@ -54,6 +63,7 @@ export default function Login() {
             </div>
 
 			<div>
+				<p>Don't have an account yet?</p>
 			    <Link to='/signup'>Signup</Link>
             </div>
 		</>

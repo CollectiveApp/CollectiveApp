@@ -9,6 +9,9 @@ require("./db");
 // https://www.npmjs.com/package/express
 const express = require("express");
 
+//require for the protected routes
+const {isAuthenticated} = require('./middleware/jwt')
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
@@ -20,17 +23,19 @@ const allRoutes = require("./routes/index.routes");
 app.use("/api", allRoutes);
 
 const adminRoutes = require('./routes/auth');
-app.use('/api/auth', adminRoutes)
+app.use('/api/auth', adminRoutes, isAuthenticated)
 
 
 const projectRoute = require('./routes/projects');
-app.use('/api/project', projectRoute)
+app.use('/api/project', projectRoute, isAuthenticated)
 
 const eventsRoutes = require('./routes/events');
-app.use('/api/event', eventsRoutes)
+app.use('/api/event', eventsRoutes, isAuthenticated)
 
 const volunteerRoutes = require('./routes/volunteers');
 app.use('/api/volunteer', volunteerRoutes)
+
+//this handles protected routes
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

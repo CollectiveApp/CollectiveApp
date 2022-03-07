@@ -9,11 +9,13 @@ import { AuthProviderWrapper } from './context/auth'
 
 
 ReactDOM.render(
-  <Router>
-    <AuthProviderWrapper>
-      <App />
-    </AuthProviderWrapper>
-  </Router>,
+  <React.StrictMode>
+    <Router>
+      <AuthProviderWrapper>
+        <App />
+     </AuthProviderWrapper>
+   </Router>
+  </React.StrictMode>,
 
   document.getElementById('root')
 );

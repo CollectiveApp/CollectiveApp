@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 
 // create new event
 
-router.post('/', (req, res, next) => {
+router.post('/create', (req, res, next) => {
   const { eventName, eventLocation, eventDate, eventTime, eventType,
         eventPicture, eventDescription, eventOutdoor } = req.body
   Event.create({ eventName, eventLocation, eventDate, eventTime, eventType, eventPicture, eventDescription, eventOutdoor})
