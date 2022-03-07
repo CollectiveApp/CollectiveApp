@@ -27,7 +27,7 @@ function App() {
     <Route path='/projects' element={<Projects />}/>
     <Route path='/projects/:id' element={<ProjectDetails />}/>
     <Route path='/events' element={<Events />}/>
-    <Route path='/volunteer' element={<Volunteer />}/>
+    <Route path='/volunteer/:id' element={<Volunteer />}/>
   {/* Admin */}
     <Route path='/behind-the-scences' element={<IsPrivate> <AdminDashboard /> </IsPrivate>} />
     <Route path='/behind-the-scences/project/edit/:id' element={<IsPrivate> <EditProject /> </IsPrivate>} />

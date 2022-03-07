@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import service from '../api/service'
 
 export default function EditProject(props) {
   // States
@@ -8,16 +9,13 @@ export default function EditProject(props) {
   const [projectStartDate, setProjectStartDate] = useState('')
   const [projectEndDate, setProjectEndDate] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
-  
-  // console.log('specificprojectprops', props)
-  // // // take id from Params to query for specific element from db to edit it
-  // // const { id } = useParams()
-  // // // console.log(id)
+  const [projectSkillsNeeded, setProjectSkillsNeeded] = useState('')
+  const [projectImageUrl, setProjectImageUrl] = useState([]);
 
   // where to change the data gained from edit
   const handleEdit = e => {
     e.preventDefault()
-		const requestBody = { projectName, projectLocation, projectStartDate, projectEndDate, projectDescription }
+		const requestBody = { projectName, projectLocation, projectStartDate, projectEndDate, projectDescription, projectSkillsNeeded, projectImageUrl }
 		axios.put(`/api/project/${props.specificproject._id}`, requestBody)
 			.then(() => {
         // actualize the projects rendered
@@ -25,6 +23,18 @@ export default function EditProject(props) {
 			})
 			.catch(err => console.log(err))
 	}
+   // ******** this method handles just the file upload ********
+ const handleFileUpload = e => {
+  // console.log("The file to be uploaded is: ", e.target.files[0]);
+  const uploadData = new FormData();
+  uploadData.append("projectImageUrl", e.target.files[0]);
+  service
+    .uploadImage(uploadData)
+    .then(response => {
+      setProjectImageUrl([...projectImageUrl, response.secure_url]);
+    })
+    .catch(err => console.log("Error while uploading the file: ", err));
+};
   
   const storedToken = localStorage.getItem('authToken')
 
@@ -38,12 +48,16 @@ export default function EditProject(props) {
         const { projectStartDate } = response.data
         const { projectEndDate } = response.data
         const { projectDescription } = response.data
+        const { projectSkillsNeeded } = response.data
+        const { projectImageUrl } = response.data
         // console.log('response.data.edit', response.data)
           setProjectName(projectName)
           setProjectLocation(projectLocation)
           setProjectStartDate(projectStartDate)
           setProjectEndDate(projectEndDate)
           setProjectDescription(projectDescription)
+          setProjectSkillsNeeded(projectSkillsNeeded)
+          setProjectImageUrl(projectImageUrl)
 			})
 			.catch(err => console.log(err))
   }
@@ -53,18 +67,25 @@ export default function EditProject(props) {
   return (
     <>
        <div>EditProject</div>
-       <form onSubmit={handleEdit}>
-         <label>Projectname: </label>
-         <input id="projectName" type="text" value={projectName} onChange={e => setProjectName(e.target.value)}/>
-         <label>Location: </label>
-         <input id="projectLocation" type="text" value={projectLocation} onChange={e => setProjectLocation(e.target.value)}/>
-         <label>Start Date: </label>
-         <input id="projectStartDate" type="text" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}/>
-         <label>End Date: </label>
-         <input id="projectEndDate" type="text" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}/>
-         <label>Description: </label>
-         <input id="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
-         <button type='submit'>Save Changes</button>
+       <form onSubmit={handleEdit}> 
+        <label>Projectname: </label>
+        <input id="projectName" type="text" value={projectName} onChange={e => setProjectName(e.target.value)}/>
+        <label>Location: </label>
+        <input id="projectLocation" type="text" value={projectLocation} onChange={e => setProjectLocation(e.target.value)}/>
+        <label>Start Date: </label>
+        <input id="projectStartDate" type="date" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}/>
+        <label>End Date: </label>
+        <input id="projectEndDate" type="date" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}/>
+        <label>Description: </label>
+        <input id="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}/>
+        <label>Looking For: </label>
+        <input id="projectSkillsNeeded" type="text" value={projectSkillsNeeded} onChange={e => setProjectSkillsNeeded(e.target.value)}/>
+        {/* file upload img cloudinary */}
+        <div>
+            <h2>Upload images</h2>
+            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
+        </div>
+        <button type='submit'>Save Changes</button>
        </form>
     </>
   )

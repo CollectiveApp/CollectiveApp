@@ -1,5 +1,5 @@
 import React from 'react'
-import ProjectList from '../components/ProjectList'
+import ProjectListVisitor from '../components/ProjectListVisitor'
 import NavBar from '../components/NavBar'
 
 export default function Projects() {
@@ -11,7 +11,7 @@ export default function Projects() {
         <NavBar />
       </div>
       <div>
-        <ProjectList />
+        <ProjectListVisitor />
       </div>
     </div>
   )

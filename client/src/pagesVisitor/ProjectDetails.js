@@ -9,7 +9,7 @@ export default function ProjectDetails() {
 	const [project, setProject] = useState(null);
 
 	useEffect(() => {
-		axios.get(`/api/projects/${id}`)
+		axios.get(`/api/project/${id}`)
 			.then(response => {
 				console.log(response)
 				setProject(response.data)
@@ -18,17 +18,30 @@ export default function ProjectDetails() {
 	}, [])
 
 	return (
-		<>
+	<>
 			{project === null ? <div>Loading ...</div> :
-				<>
-					<h1>ProjectDetails</h1>
-					<h3>{project.projectName}</h3>
-          <p>{project.projectLocation}</p>
-					<p>{project.projectDescription}</p>
-          <p>{project.projectStartDate}</p>
-          <p>{project.projectEndDate}</p>
-          <p>{project.projectGallery}</p>	
-				</>
+			<>
+				{project.projectImageUrl.map(image => { 
+					console.log(image)
+					return (
+					<div key={project._id}>
+					<img src={image} alt="ProjectPictures"/>
+					</div>
+					)
+					}
+				)}
+				<h1>{project.projectName}</h1>
+          		<h4>Location: {project.projectLocation}</h4>
+          		<h5>Date: {project.projectStartDate}  -  {project.projectEndDate}</h5>
+				<p>What the project is about: {project.projectDescription}</p>
+				<p>Looking for: {project.projectSkillsNeeded}</p>
+				<div>
+				<h4>Wanna Participate?</h4>
+				<h5>Click</h5>
+				<h5>Pfeil nach unten</h5>
+				<Link to={`/volunteer/${project._id}`}>Volunteer</Link>
+				</div>
+			</>
 			}
     </>
 	)

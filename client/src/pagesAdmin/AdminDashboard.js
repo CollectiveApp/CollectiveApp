@@ -23,6 +23,12 @@ export default function AdminDashboard() {
                     <EventList />
                 </div>
             </>
+            <>
+            <h1>Volunteers</h1>
+                <div>
+                   <button>Full Database</button>
+                </div>
+            </>
         </div>
     </>
   )
