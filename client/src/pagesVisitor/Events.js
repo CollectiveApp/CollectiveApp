@@ -1,7 +1,8 @@
 import React from "react";
 import EventNavbar from "../components/EventNAvbar";
-import EvetntFiltersBar from "../components/EventFiltersBar";
-import EventsVisitorsList from "../components/EventsViewsList";
+import EventFiltersBar from "../components/EventFiltersBar";
+import EventsVisitorsList from "../components/EventsVisitorsList";
+import { useState } from "react";
 
 
 export default function EventsVisitors(){
@@ -15,7 +16,7 @@ export default function EventsVisitors(){
     return(
         <>
         <EventNavbar />
-        <EvetntFiltersBar />
+        <EventFiltersBar />
         <EventsVisitorsList events={filteredSearchEvents}/>
         </>
     )
