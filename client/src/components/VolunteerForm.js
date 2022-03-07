@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
@@ -18,6 +18,7 @@ export default function VolunteerForm() {
     const [personalMessage, setPersonalMessage] = useState('');
     const [projectAppliedFor, setProjectAppliedFor] = useState('');
 
+    // save id to assign it to projectAppliedFor
     const { id } = useParams()
 
     const handleSubmit = e => {

@@ -10,7 +10,7 @@ export default function EditProject(props) {
   const [projectEndDate, setProjectEndDate] = useState('')
   const [projectDescription, setProjectDescription] = useState('')
   const [projectSkillsNeeded, setProjectSkillsNeeded] = useState('')
-  const [projectImageUrl, setProjectImageUrl] = useState('');
+  const [projectImageUrl, setProjectImageUrl] = useState([]);
 
   // where to change the data gained from edit
   const handleEdit = e => {
@@ -31,7 +31,7 @@ export default function EditProject(props) {
   service
     .uploadImage(uploadData)
     .then(response => {
-      setProjectImageUrl(...projectImageUrl, response.secure_url);
+      setProjectImageUrl([...projectImageUrl, response.secure_url]);
     })
     .catch(err => console.log("Error while uploading the file: ", err));
 };
@@ -49,6 +49,7 @@ export default function EditProject(props) {
         const { projectEndDate } = response.data
         const { projectDescription } = response.data
         const { projectSkillsNeeded } = response.data
+        const { projectImageUrl } = response.data
         // console.log('response.data.edit', response.data)
           setProjectName(projectName)
           setProjectLocation(projectLocation)
@@ -56,6 +57,7 @@ export default function EditProject(props) {
           setProjectEndDate(projectEndDate)
           setProjectDescription(projectDescription)
           setProjectSkillsNeeded(projectSkillsNeeded)
+          setProjectImageUrl(projectImageUrl)
 			})
 			.catch(err => console.log(err))
   }
@@ -81,7 +83,7 @@ export default function EditProject(props) {
         {/* file upload img cloudinary */}
         <div>
             <h2>Upload images</h2>
-            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} multiple/>
+            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
         </div>
         <button type='submit'>Save Changes</button>
        </form>
