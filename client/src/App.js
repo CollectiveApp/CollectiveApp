@@ -8,16 +8,16 @@ import Volunteer from './pagesVisitor/Volunteer'
 import AdminDashboard from './pagesAdmin/AdminDashboard';
 import EditProject from './pagesAdmin/EditProject';
 import EditEvent from './pagesAdmin/EditEvent';
-import Login from './pagesLog/login'
-import Signup from './pagesLog/signup';
+import Login from './pagesLog/Login'
+import Signup from './pagesLog/Signup';
 import IsPrivate from './components/IsPrivate';
-import Navbar from './components/NavBar';
+
 
 
 function App() {
   return (
   <div className="App"> 
-  <Navbar />
+  
   <Routes>
   {/* Authorization  */}
     <Route path='/login' element={<Login />}/>

@@ -17,7 +17,7 @@ export default function Signup() {
 		
 		e.preventDefault()
 		const requestBody = { email, password, name }
-		axios.post(`/${API_URL}/auth/signup`, requestBody)
+		axios.post(`/api/auth/signup`, requestBody)
 			.then(response => {
 				
 				navigate('/login')
