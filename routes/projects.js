@@ -44,6 +44,7 @@ router.delete('/:id', (req, res, next) => {
 //get specific project
 router.get('/:id', (req, res, next) => {
   Project.findById(req.params.id)
+    .populate('volunteerApplications')
     .then(project => {
       if (!project) {
         res.status(404).json(project)
@@ -53,6 +54,7 @@ router.get('/:id', (req, res, next) => {
     })
     .catch(err => next(err))
 });
+
 // edit a project
 router.put('/:id', (req, res, next) => {
   const { projectName, 

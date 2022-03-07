@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import PopUpEditProject from './PopUpEditProject'
 import PopUpCreateProject from './PopUpCreateProject'
@@ -20,7 +21,7 @@ const handleProjectToBeEdited = project => {
 const getAllProjects = () => {
   // request 'api/projects'
   // for every request to a project route we need to also send the token
-  axios.get('/api/project/', { headers: { Authorization: `Bearer ${storedToken}` } })
+  axios.get('/api/projects', { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
           console.log('response.data',response.data)
           // set the state of projects
@@ -56,7 +57,7 @@ useEffect(() => {getAllProjects()}, [])
                         })
                       .catch(err => console.log(err))
                   }}>Delete</button>
-                  <button>See Applications</button>
+                  <Link to={`/behind-the-scences/project/volunteer/${project._id}`}>See Applications</Link>
                 </div>
                 )}
                 )}

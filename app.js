@@ -25,15 +25,14 @@ app.use("/api", allRoutes);
 const adminRoutes = require('./routes/auth');
 app.use('/api/auth', adminRoutes, isAuthenticated)
 
-
 const projectRoute = require('./routes/projects');
-app.use('/api/project', projectRoute, isAuthenticated)
+app.use('/api/projects', projectRoute, isAuthenticated)
 
 const eventsRoutes = require('./routes/events');
 app.use('/api/event', eventsRoutes, isAuthenticated)
 
 const volunteerRoutes = require('./routes/volunteers');
-app.use('/api/volunteer', volunteerRoutes)
+app.use('/api/volunteers', volunteerRoutes, isAuthenticated)
 
 //this handles protected routes
 

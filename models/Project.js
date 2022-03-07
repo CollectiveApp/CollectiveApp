@@ -10,6 +10,10 @@ const ProjectSchema = new Schema(
     projectDescription: String,
     projectSkillsNeeded: String,
     projectImageUrl: [String],
+    volunteerApplications: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Volunteer'
+    }]
   },
   {
     timestamps: true,

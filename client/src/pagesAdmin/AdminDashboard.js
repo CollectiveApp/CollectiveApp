@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ProjectList from '../components/ProjectList'
 import EventList from '../components/EventList'
 import Navbar from '../components/NavBar'
+import { Link } from 'react-router-dom'
 
 export default function AdminDashboard() {
 
@@ -26,7 +27,7 @@ export default function AdminDashboard() {
             <>
             <h1>Volunteers</h1>
                 <div>
-                   <button>Full Database</button>
+                   <Link to={'/behind-the-scences/volunteers/fullList'}>Volunteers Database</Link>
                 </div>
             </>
         </div>

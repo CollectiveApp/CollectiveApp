@@ -9,7 +9,7 @@ export default function ProjectDetails() {
 	const [project, setProject] = useState(null);
 
 	useEffect(() => {
-		axios.get(`/api/project/${id}`)
+		axios.get(`/api/projects/${id}`)
 			.then(response => {
 				console.log(response)
 				setProject(response.data)
