@@ -23,7 +23,7 @@ export default function VolunteerForm() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        // send the data from the state as a post request to the backend
+        // send the data from the state as a post request to the backend 
         axios.post('/api/volunteer/create', { 
             firstName,
             lastName,

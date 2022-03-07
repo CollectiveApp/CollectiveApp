@@ -33,7 +33,7 @@ export default function EditProject() {
 	const storedToken = localStorage.getItem('authToken')
 
 	const getEventToEdit = () => {
-		axios.get(`${API_URL}/api/project/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.get(`/api/event/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 		.then(response =>{
 			const { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation, setOutdoors } = response.data
 				setEventName(eventName)
