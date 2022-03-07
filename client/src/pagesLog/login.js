@@ -13,12 +13,12 @@ export default function Login() {
 
 	const navigate = useNavigate()
 
-	const { storeToken, authenticateAdmin , verifyStoredToken } = useContext(AuthContext)
+	const { storeToken, authenticateAdmin } = useContext(AuthContext)
 
 	const handleSubmit = e => {
 		e.preventDefault()
 		const requestBody = { email, password }
-		axios.post(`/${API_URL}/auth/login`, requestBody)
+		axios.post(`/api/auth/login`, requestBody)
 			.then(response => {
 				
 				console.log('we have a token')
@@ -26,15 +26,13 @@ export default function Login() {
 				// store the token
 				storeToken(token)
 				authenticateAdmin()
-				verifyStoredToken()
 					.then(() => {
 						// redirect to projects
 						navigate('/behind-the-scences')
 					})
 			})
 			.catch(err => {
-				const errorDescription = err.response.data.message
-				setErrorMessage(errorDescription)
+				console.log(err)
 			})
 	}
 

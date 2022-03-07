@@ -1,5 +1,6 @@
 const Project = require("../models/Project");
-
+// require Cloudinary
+const fileUploader = require('../config/cloudinary.config');
 const router = require("express").Router();
 
 // get all projects
@@ -10,22 +11,21 @@ router.get('/', (req, res, next) => {
   })
 });
 
+// upload file to cloudinary
+router.post('/upload', fileUploader.single("projectImageUrl"), (req, res, next) => {
+  console.log("file is:", req.file)
+  if(!req.file) {
+    next(new Error("No file uploaded!"))
+    return
+  }
+  res.json({ secure_url: req.file.path })
+})
+
 // create a project
 router.post('/create', (req, res, next) => {
-  const { projectName,
-          projectLocation,
-          projectStartDate,
-          projectEndDate,
-          projectDescription,
-         } = req.body
-  Project.create({ 
-          projectName,
-          projectLocation,
-          projectStartDate,
-          projectEndDate,
-          projectDescription,
-           })
+  Project.create(req.body)
     .then(project => {
+      console.log(project)
     res.status(201).json(project)
     })
     .catch(err => next(err))
@@ -59,13 +59,15 @@ router.put('/:id', (req, res, next) => {
           projectLocation, 
           projectStartDate, 
           projectEndDate, 
-          projectDescription } = req.body
+          projectDescription,
+          projectSkillsNeeded} = req.body
   Project.findByIdAndUpdate(req.params.id, {
           projectName,
           projectLocation, 
           projectStartDate, 
           projectEndDate, 
-          projectDescription
+          projectDescription,
+          projectSkillsNeeded
   }, { new: true })
     .then(updatedProject => {
       res.status(200).json(updatedProject)

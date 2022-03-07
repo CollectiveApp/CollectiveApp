@@ -9,7 +9,6 @@ export default function Home() {
       <p>Description</p>
       <Link to={'/projects'}>Projects</Link>
       <Link to={'/events'}>Events</Link>
-      <Link to={'/volunteer'}>Volunteer</Link>
     </div>
   )
 }

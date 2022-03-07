@@ -32,6 +32,8 @@ app.use('/api/project', projectRoute, isAuthenticated)
 const eventsRoutes = require('./routes/events');
 app.use('/api/event', eventsRoutes, isAuthenticated)
 
+const volunteerRoutes = require('./routes/volunteers');
+app.use('/api/volunteer', volunteerRoutes)
 
 //this handles protected routes
 

@@ -10,16 +10,23 @@ export default function AdminDashboard() {
     
         <h1>Welcome to your Dashboard!</h1>
         <div>
-            <>
+            <Navbar />
+            
             <h1>Projects</h1>
             <div>
                 <ProjectList />
             </div>
-            </>
+            
             <>
             <h1>Events</h1>
                 <div>
                     <EventList />
+                </div>
+            </>
+            <>
+            <h1>Volunteers</h1>
+                <div>
+                   <button>Full Database</button>
                 </div>
             </>
         </div>
