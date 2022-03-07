@@ -23,7 +23,7 @@ export default function AdminDashboard() {
             <>
             <h1>Volunteers</h1>
                 <div>
-                   <button>Database</button>
+                   <button>Full Database</button>
                 </div>
             </>
         </div>

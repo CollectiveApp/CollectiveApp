@@ -46,7 +46,7 @@ const handleSubmit = e => {
     service
       .uploadImage(uploadData)
       .then(response => {
-        setProjectImageUrl(response.secure_url);
+        setProjectImageUrl([response.secure_url, ...projectImageUrl]);
       })
       .catch(err => console.log("Error while uploading the file: ", err));
   };
@@ -69,7 +69,16 @@ const handleSubmit = e => {
         {/* file upload img cloudinary */}
         <div>
             <h2>Upload images</h2>
-            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} multiple/>
+            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
+        </div>
+        <div>
+            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
+        <div>
+            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
+         <div>
+            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
         </div>
         <button type='submit'>Create Project</button>
     </form>

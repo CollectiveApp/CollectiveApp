@@ -56,7 +56,7 @@ useEffect(() => {getAllProjects()}, [])
                         })
                       .catch(err => console.log(err))
                   }}>Delete</button>
-                  <button>Applications</button>
+                  <button>See Applications</button>
                 </div>
                 )}
                 )}

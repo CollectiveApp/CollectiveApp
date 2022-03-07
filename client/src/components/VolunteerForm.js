@@ -16,6 +16,7 @@ export default function VolunteerForm() {
     const [experience, setExperience] = useState('');
     const [tools, setTools] = useState('');
     const [personalMessage, setPersonalMessage] = useState('');
+    const [projectAppliedFor, setProjectAppliedFor] = useState('');
 
     const { id } = useParams()
 
@@ -34,7 +35,8 @@ export default function VolunteerForm() {
             timeTo,
             experience,
             tools,
-            personalMessage
+            personalMessage,
+            projectAppliedFor: id
          })
             .then(response => {
                 console.log(response)
@@ -53,6 +55,7 @@ export default function VolunteerForm() {
             setExperience('')
             setTools('')
             setPersonalMessage('')
+            setProjectAppliedFor('')
     }
 
   return (

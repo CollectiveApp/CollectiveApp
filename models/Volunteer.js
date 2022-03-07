@@ -23,10 +23,10 @@ const VolunteerSchema = new Schema(
         required: true
     },
      // choose out of the Project-DB
-    projectInterested:[{
+    projectAppliedFor:{
         type: Schema.Types.ObjectId,
         ref: 'Project'
-    }],
+    },
     timeFrom: String,
     timeTo: String,
     experience: {

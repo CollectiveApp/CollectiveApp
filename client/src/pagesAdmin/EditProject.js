@@ -31,7 +31,7 @@ export default function EditProject(props) {
   service
     .uploadImage(uploadData)
     .then(response => {
-      setProjectImageUrl(response.secure_url);
+      setProjectImageUrl(...projectImageUrl, response.secure_url);
     })
     .catch(err => console.log("Error while uploading the file: ", err));
 };
