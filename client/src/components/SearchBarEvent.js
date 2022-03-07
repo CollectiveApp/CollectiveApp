@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
 
-export default function SearchBArEvent(props){
+
+export default function SearchBarEvent(props){
 
 
     const handleInputChange = event => {
