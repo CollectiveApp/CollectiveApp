@@ -21,7 +21,7 @@ export default function EventDetails() {
 	<>
 			{event === null ? <div>Loading ...</div> :
 			<>
-				{event.eventImageUrl.map(image => { 
+				{event.map(image => { 
 					console.log(image)
 					return (
 					<div key={event._id}>
@@ -32,7 +32,7 @@ export default function EventDetails() {
 				)}
 				<h1>{event.eventName}</h1>
           		<h4>Location: {event.eventLocation}</h4>
-				<p>What the event is about: {event.eventtDescription}</p>
+				<p>What the event is about: {event.eventDescription}</p>
 				<div>
 				<h4>Wanna Participate?</h4>
 				<h5>Click</h5>
