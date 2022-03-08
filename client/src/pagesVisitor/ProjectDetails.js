@@ -4,12 +4,12 @@ import { useParams, Link } from 'react-router-dom';
 
 export default function ProjectDetails() {
 
- const { id } = useParams()
-
-	const [project, setProject] = useState(null);
+const { id } = useParams()
+const [project, setProject] = useState(null);
+const storedToken = localStorage.getItem('authToken')
 
 	useEffect(() => {
-		axios.get(`/api/projects/${id}`)
+		axios.get(`/api/projects/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 			.then(response => {
 				console.log(response)
 				setProject(response.data)

@@ -1,9 +1,11 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
+import VolunteersSearchBar from '../components/VolunteersSearchBar'
 
 export default function VolunteersFullList() {
 
 const [volunteers, setVolunteers] = useState([]);
+const [search, setSearch] = useState('')
 
 const storedToken = localStorage.getItem('authToken')
 
@@ -20,11 +22,19 @@ const getAllVolunteers = () => {
 
   useEffect(() => {getAllVolunteers()}, [])
 
+  // filtering firstName and lastName by Search-Input 
+  let filteredVolunteers = volunteers.filter(volunteer => {
+  if(volunteer.firstName.toLowerCase().includes(search.toLowerCase()) || volunteer.lastName.toLowerCase().includes(search.toLowerCase())){
+    return volunteer
+  }
+})
+
   if(volunteers === []) {
     return <>No Applications so far...</>
   }
     return (
       <>
+      <VolunteersSearchBar volunteers={volunteers} setSearch={setSearch} search={search}/>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <table>
               <thead>
@@ -43,7 +53,7 @@ const getAllVolunteers = () => {
                 <hr/>
               </thead>
               <tbody>
-              {volunteers.map(volunteer => {
+              {filteredVolunteers.map(volunteer => {
                 return (
                 <>
                 <tr key={volunteer._id}>
