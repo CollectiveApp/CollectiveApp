@@ -40,10 +40,12 @@ const getAllVolunteers = () => {
                   <th>Tools</th>
                   <th>Message</th>
                 </tr>
+                <hr/>
               </thead>
               <tbody>
               {volunteers.map(volunteer => {
                 return (
+                <>
                 <tr key={volunteer._id}>
                     <td>{volunteer.firstName}</td>
                     <td>{volunteer.lastName}</td>
@@ -56,6 +58,8 @@ const getAllVolunteers = () => {
                     <td>{volunteer.tools}</td>
                     <td>{volunteer.personalMessage}</td>
                 </tr>
+                <hr/>
+                </>
                 )
               })}
               </tbody>

@@ -41,10 +41,12 @@ if(project === '') {
                 <th>Message</th>
               </tr>
             </thead>
+            <hr/>
             <tbody>
             {project.volunteerApplications.map(application => {
               console.log('application', application)
               return (
+              <>
               <tr key={application._id}>
                   <td>{application.firstName}</td>
                   <td>{application.lastName}</td>
@@ -57,6 +59,8 @@ if(project === '') {
                   <td>{application.tools}</td>
                   <td>{application.personalMessage}</td>
               </tr>
+              <hr/>
+              </>
               )
             })}
             </tbody>
