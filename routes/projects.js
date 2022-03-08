@@ -9,6 +9,7 @@ router.get('/', (req, res, next) => {
     .then(projects => {
     res.status(200).json(projects)
   })
+  .catch(err => next(err))
 });
 
 // upload file to cloudinary

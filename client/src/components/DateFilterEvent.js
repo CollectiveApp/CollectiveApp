@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 
 export default function DateFilterEvent(){
 
     const [events, setEvents] = useState([])
     const [eventDate ,setEventDate] = useState()
+
+    const storedToken = localStorage.getItem('authToken')
 
     const handleSubmit = e =>{
         e.preventDefaullt()

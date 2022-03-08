@@ -13,6 +13,7 @@ const getAllVolunteers = () => {
         console.log(response)
         setVolunteers(response.data)
         console.log('volunteers', response.data)
+        console.log(volunteers)
       })
       .catch(err => console.log(err))
   }
@@ -24,6 +25,7 @@ const getAllVolunteers = () => {
   }
     return (
       <>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
             <table>
               <thead>
                 <tr>
@@ -58,6 +60,7 @@ const getAllVolunteers = () => {
               })}
               </tbody>
             </table>
+        </div>
       </>
     )
   }
