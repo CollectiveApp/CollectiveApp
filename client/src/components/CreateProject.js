@@ -10,6 +10,7 @@ const [projectLocation, setProjectLocation] = useState('')
 const [projectStartDate, setProjectStartDate] = useState('')
 const [projectEndDate, setProjectEndDate] = useState('')
 const [projectDescription, setProjectDescription] = useState('')
+const [projectSkillsNeeded, setProjectSkillsNeeded] = useState('')
 const [projectImageUrl, setProjectImageUrl] = useState([]);
 
 const handleSubmit = e => {
@@ -21,6 +22,7 @@ const handleSubmit = e => {
         projectStartDate,
         projectEndDate,
         projectDescription,
+        projectSkillsNeeded,
         projectImageUrl
      })
         .then(response => {
@@ -33,6 +35,7 @@ const handleSubmit = e => {
     setProjectStartDate('')
     setProjectEndDate('')
     setProjectDescription('')
+    setProjectSkillsNeeded('')
     setProjectImageUrl([])
     // actualize the projects rendered
     props.refreshProjects()
@@ -65,6 +68,8 @@ const handleSubmit = e => {
             <input id="projectEndDate" name="projectEndDate" type="date" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}></input>
             <label>Project Description: </label>
             <input id="projectDescription" name="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}></input>
+            <label>Looking for Volunteers: </label>
+            <input id="projectSkillsNeeded" name="projectSkillsNeeded" type="text" value={projectSkillsNeeded} onChange={e => setProjectSkillsNeeded(e.target.value)}></input>
         </div>
         {/* file upload img cloudinary */}
         <div>

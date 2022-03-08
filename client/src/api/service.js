@@ -12,7 +12,7 @@ const errorHandler = err => {
 
 const uploadImage = (file) => {
   return service
-    .post("project/upload", file)
+    .post("projects/upload", file)
     .then(res => res.data)
     .catch(errorHandler);
 };

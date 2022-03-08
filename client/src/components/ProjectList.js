@@ -49,7 +49,7 @@ useEffect(() => {getAllProjects()}, [])
                     handleClose={() => {setProjectToBeEdited(null)}} thisproject={projectToBeEdited} refreshProjects={getAllProjects}/>
                     }
                   <button onClick={()=>{
-                    axios.delete(`/api/project/${project._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+                    axios.delete(`/api/projects/${project._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
                       .then(deletedProject => {
                         console.log('deletedProject', deletedProject)
                         // get all projects to show immediately list of projects without deleted item
