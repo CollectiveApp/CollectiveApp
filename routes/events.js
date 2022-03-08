@@ -6,6 +6,7 @@ const router = require("express").Router();
 router.get('/', (req, res, next) => {
   Event.find()
   .then(events => {
+    console.log('this are events', events)
       res.status(200).json(events)
   })
 });

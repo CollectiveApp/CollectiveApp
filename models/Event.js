@@ -5,11 +5,11 @@ const EventSchema = new Schema(
   {
     eventName: String,
     eventLocation: String,
-    eventDate: Date,
+    eventDate: String,
     eventTime: String,
     eventDescription: String,
     eventType: String,
-    eventPicture: String,
+    eventPicture: [String],
     eventOutdoor: Boolean,
   },
   {

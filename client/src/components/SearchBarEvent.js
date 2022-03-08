@@ -11,6 +11,7 @@ export default function SearchBarEvent(props){
 
     return (
         <>
+            <div>search</div>
             <input type="search" onChange={handleInputChange} />
         </>
     )

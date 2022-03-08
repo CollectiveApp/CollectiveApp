@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import ToggleEvent from "../components/ToggleEvent";
 import axios from 'axios'
 import { Link } from "react-router-dom";
-import TypeFilterEvent from "../components/TypeEventFilter";
+import TypeFilterEvent from "../components/TypeFilterEvent";
 
 
 export default function EventsVisitors(){
@@ -15,9 +15,9 @@ export default function EventsVisitors(){
 
     const [events, setEvents] = useState(null)
     const [query, setQuery] = useState('')
-    const [eventDate ,setEventDate] = useState()
+    const [eventDate ,setEventDate] = useState('')
     const [toggle, setToggle] = useState(false)
-    const [type, setType] = useState('all')
+    const [type, setType] = useState('')
 
     
 
@@ -37,6 +37,10 @@ export default function EventsVisitors(){
 
    useEffect(()=> {getAllEvents()}, [])
 
+   const handleClean = () => {
+       setEventDate('')
+   }
+
     let filteredEvents;
 
     if(events){
@@ -44,26 +48,31 @@ export default function EventsVisitors(){
        return event.eventName.toLowerCase().includes(query)
     })}
 
+    
+    if(events && eventDate){
+        filteredEvents = filteredEvents.filter(event =>{
+            return event.eventDate === eventDate
+         })
+    }
+
     if(toggle){
          filteredEvents = filteredEvents.filter(event =>{
-            event.eventOutdoor === true
+            return event.eventOutdoor === true
         })
     }
     
-    // if(type === 'all'){
-    //     return filteredEvents
-    // }else{
-    //     filteredEvents = filteredEvents.filter( event =>{
-    //         event.eventType = type
-    //     })
-    // }
+    if(type !== ''){
+       filteredEvents = filteredEvents.filter( event =>{
+           return event.eventType.toLowerCase() === type.toLowerCase()
+       })
+    }
    
     
     if(events === null){
-        return <></>
+        return <>Loading...</>
     }
 
-
+    
     return(
         <>
         <div>
@@ -71,10 +80,11 @@ export default function EventsVisitors(){
         </div>
         <div>
             <div>
-                <DateFilterEvent setDateProp={setEventDate}/>
+                <DateFilterEvent eventDate={eventDate} setEventDateProp={setEventDate}/>
+                <button onClick={handleClean}>clean</button> 
                 <SearchBarEvent setQueryProp={setQuery}/>
                 <ToggleEvent setCheckProp={setToggle}/>
-                <TypeFilterEvent setTypeProp={setType}/>
+                <TypeFilterEvent type={type} setTypeProp={setType}/>
                 
             </div>
             <div>

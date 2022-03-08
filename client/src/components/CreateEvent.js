@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Outdoor from './Otdoor';
 import axios from 'axios'
 
 
@@ -11,13 +10,25 @@ export default function CreateEvent(props) {
   const [eventDate, setEventDate] = useState('')
   const [eventTime, setEventTime] = useState('')
   const [eventType, setEventType] = useState('')
-  const [eventPicture, setEventPicture] = useState('')
+  const [eventPicture, setEventPicture] = useState([])
   const [eventLocation, setEventLocation] = useState('')
+  const [eventOutdoor, setEventOutdoor] = useState(false)
+
+  const options = [
+    {label:'All', value:'all'},
+    {label: 'Music', value: 'music' },
+    {label: 'Food', value: 'food'},
+    {label: 'Sports', value: 'sports' },
+    {label: 'Arts', value: 'arts' },
+    {label: 'Building', value: 'building' },
+    {label: 'Meetups', value: 'meetups' },
+    {label: 'Social Volunteer', value: 'social volunteer' },
+]
   
   const handleSubmit = e => {
 		e.preventDefault()
-		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation }
-		axios.post(`${API_URL}/api/event/create`, requestBody)
+		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation, eventOutdoor }
+		axios.post(`/api/event/create`, requestBody)
     .then(response => {
       console.log(response)
     })
@@ -29,11 +40,23 @@ export default function CreateEvent(props) {
       setEventTime('')
       setEventType('')
       setEventLocation('')
-      setEventPicture('')
+      setEventPicture([])
+      setEventOutdoor(false)
 
       props.refreshEvents()
 	}
 
+  const handleFileUpload = e => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    const uploadData = new FormData();
+    uploadData.append("eventPicture", e.target.files[0]);
+    service
+      .uploadImage(uploadData)
+      .then(response => {
+        setEventPicture([response.secure_url, ...eventPicture]);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
 
   const handleEventName = e => setEventName(e.target.value)
   const handleEventDescription = e => setEventDescription(e.target.value)
@@ -41,7 +64,7 @@ export default function CreateEvent(props) {
   const handleEventTime = e => setEventTime(e.target.value)
   const handleEventType = e => setEventType(e.target.value)
   const handleEventLocation = e => setEventLocation(e.target.value)
-  const handleEventPicture = e => setEventPicture(e.target.value)
+  const handleCheckBox = e => setEventOutdoor(e.target.checked)
 
   return (
     <>
@@ -56,12 +79,38 @@ export default function CreateEvent(props) {
         <input type="time" value={eventTime} onChange={handleEventTime}></input>
         <label htmlFor='Location'>Location</label>
         <input type="text" value={eventLocation} onChange={handleEventLocation}></input>
-        <label htmlFor='Type'>Type</label>
-        <input type="text" value={eventType} onChange={handleEventType}></input>
-        <label htmlFor='Picture'>Picture</label>
-        <input type="text" value={eventPicture} onChange={handleEventPicture}></input>
+        <div>
+            Event Type
+        </div>
+        <div>
+        <label>
+            <select value={eventType} onChange={handleEventType}>
+                {options.map((option) => (
+                <option value={option.value}>{option.label}</option>
+                ))}
+            </select>
+        </label>
+        </div>
         
-        <Outdoor />
+        <div>
+            <h2>Upload images</h2>
+            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
+        </div>
+        <div>
+            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
+        <div>
+            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
+         <div>
+            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
+        </div>
+        
+        <div>
+            <label htmlFor='Outdoor'>Outdoor</label>
+            <input type="checkBox" value={eventOutdoor} onChange={handleCheckBox}/>
+        </div>
+        
                 
         <button type='submit'>Submit New Event</button>
     </form>

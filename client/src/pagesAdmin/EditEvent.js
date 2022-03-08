@@ -1,41 +1,63 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-export default function EditProject() {
+export default function EditProject(props) {
 
 	const [eventName, setEventName] = useState('');
 	const [eventDescription, setEventDescription] = useState('');
   	const [eventDate, setEventDate] = useState('')
   	const [eventTime, setEventTime] = useState('')
   	const [eventType, setEventType] = useState('')
-  	const [eventPicture, setEventPicture] = useState('')
+  	const [eventPicture, setEventPicture] = useState([])
   	const [eventLocation, setEventLocation] = useState('')
-  	const [outdoors, setOutdoors] = useState(false)
+  	const [eventOutdoor, setEventOutdoor] = useState(false)
+	
+	const options = [
+    	{label:'All', value:'all'},
+        {label: 'Music', value: 'music' },
+        {label: 'Food', value: 'food'},
+        {label: 'Sports', value: 'sports' },
+        {label: 'Arts', value: 'arts' },
+        {label: 'Building', value: 'building' },
+        {label: 'Meetups', value: 'meetups' },
+        {label: 'Social Volunteer', value: 'social volunteer' },
+    ]
   
   
 	const { id } = useParams()
-	const navigate = useNavigate()
-
+	
 
 	const handleSubmit = e => {
 		console.log()
 		e.preventDefault()
-		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation, outdoors }
+		const requestBody = { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation, eventOutdoor }
 		axios.put(`/api/event/${id}`, requestBody)
 			.then(() => {
-				navigate(`/behind-the-scences/event/edit/${id}`)
+				props.refreshEvents()
 			})
 			.catch(err => console.log(err))
 	}
+
+	const handleFileUpload = e => {
+		// console.log("The file to be uploaded is: ", e.target.files[0]);
+		const uploadData = new FormData();
+		uploadData.append("eventPicture", e.target.files[0]);
+		service
+		  .uploadImage(uploadData)
+		  .then(response => {
+			setEventPicture([...eventPicture, response.secure_url]);
+		  })
+		  .catch(err => console.log("Error while uploading the file: ", err));
+	  };
 
 
 	const storedToken = localStorage.getItem('authToken')
 
 	const getEventToEdit = () => {
-		axios.get(`${API_URL}/api/project/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.get(`/api/event/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
 		.then(response =>{
-			const { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation, setOutdoors } = response.data
+			const { eventName, eventDescription, eventDate, eventTime, eventType, eventPicture, eventLocation, eventOutdoor } = response.data
 				setEventName(eventName)
 				setEventDescription(eventDescription)
         		setEventDate(eventDate)
@@ -43,14 +65,15 @@ export default function EditProject() {
         		setEventType(eventType)
         		setEventPicture(eventPicture)
        			setEventLocation(eventLocation)
-				setOutdoors(false)
+				setEventOutdoor(eventOutdoor)
 		})
 		.catch(err => console.log(err))
 	}
 	useEffect(() => { getEventToEdit()}, [])
 
 	
-    const handleCheckBox = e => setOutdoors(e.target.value)
+    const handleCheckBox = e => setEventOutdoor(e.target.value)
+	const handleEventType = e => setEventType(e.target.value)
 
 	return (
 		<>
@@ -72,14 +95,18 @@ export default function EditProject() {
 					value={eventDescription}
 					onChange={e => setEventDescription(e.target.value)}
 				/>
-        <label htmlFor="eventName"> Type </label>
-				<input
-					id="eventType"
-					name='eventType'
-					type="text"
-					value={eventType}
-					onChange={e => setEventType(e.target.value)}
-				/>
+        <div>
+            Event Type
+        </div>
+        <div>
+        <label>
+            <select value={eventType} onChange={handleEventType}>
+                {options.map((option) => (
+                <option value={option.value}>{option.label}</option>
+                ))}
+            </select>
+        </label>
+        </div>
         <label htmlFor="eventName">Date </label>
 				<input
 					id="eventDate"
@@ -104,22 +131,16 @@ export default function EditProject() {
 					value={eventLocation}
 					onChange={e => setEventLocation(e.target.value)}
 				/>
-        <label htmlFor="eventName">Picture </label>
-				<input
-					id="eventPicture"
-					name='eventPicture'
-					type="text"
-					value={eventPicture}
-					onChange={e => setEventPicture(e.target.value)}
-				/>
-				<div>
-            		Outdoor
-            		<input type="checkBox" value={outdoors} name='outdoors' onChange={handleCheckBox}/>
-        		</div>
+		<div>
+            Outdoor
+            <input type="checkBox" value={eventOutdoor} name='outdoors' onChange={handleCheckBox}/>
+        </div>
+        <div>
+            <h2>Upload images</h2>
+            <input id="eventPicture" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
+        </div>
+				
 				<button type="submit">Update this project</button>
-				<div>
-					<Link to='/behind-the-scences'>back</Link>
-				</div>
 			</form>
 			
 			
