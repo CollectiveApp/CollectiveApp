@@ -23,10 +23,10 @@ router.post('/create', (req, res, next) => {
 router.get('/', (req, res, next) => {
   Volunteer.find()
     .populate('projectAppliedFor')
-    .then(dbApplications => {
-      // console.log('Applications in DB', dbApplications)
+    .then(applications => {
+      res.status(200).json(applications)
     })
     .catch(err => next(err))
-});
+  });
 
 module.exports = router;

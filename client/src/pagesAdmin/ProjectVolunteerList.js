@@ -25,6 +25,7 @@ if(project === '') {
 }
   return (
     <>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
           <table>
             <thead>
               <tr>
@@ -60,6 +61,7 @@ if(project === '') {
             })}
             </tbody>
           </table>
+      </div>
     </>
   )
 }
