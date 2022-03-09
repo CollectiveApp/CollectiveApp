@@ -11,20 +11,23 @@ const [projectStartDate, setProjectStartDate] = useState('')
 const [projectEndDate, setProjectEndDate] = useState('')
 const [projectDescription, setProjectDescription] = useState('')
 const [projectSkillsNeeded, setProjectSkillsNeeded] = useState('')
-const [projectImageUrl, setProjectImageUrl] = useState([]);
+const [projectImageUrls, setProjectImageUrls] = useState([]);
 
 const handleSubmit = e => {
     e.preventDefault()
     // send the data from the state as a post request to the backend
-	axios.post('/api/projects/create', { 
+    const requestBody = { 
         projectName,
         projectLocation,
         projectStartDate,
         projectEndDate,
         projectDescription,
         projectSkillsNeeded,
-        projectImageUrl
-     })
+        projectImageUrls
+     }
+     console.log('requestBody', requestBody)
+
+	axios.post('/api/projects/create', requestBody)
         .then(response => {
             console.log(response)
         })
@@ -36,22 +39,30 @@ const handleSubmit = e => {
     setProjectEndDate('')
     setProjectDescription('')
     setProjectSkillsNeeded('')
-    setProjectImageUrl([])
+    setProjectImageUrls([])
     // actualize the projects rendered
     props.refreshProjects()
 }
 
  // ******** this method handles just the file upload ********
  const handleFileUpload = e => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
     const uploadData = new FormData();
-    uploadData.append("projectImageUrl", e.target.files[0]);
+    const uploadedFiles = [...e.target.files]
+
+    console.log(uploadedFiles)
+    console.log(e.target.files[0])
+    
+    uploadedFiles.map(file  => {
+    console.log(file)
+    uploadData.append("projectImageUrls", file);
     service
       .uploadImage(uploadData)
       .then(response => {
-        setProjectImageUrl([response.secure_url, ...projectImageUrl]);
+          console.log('response.secure_url', response.secure_url)
+        setProjectImageUrls([...response.secure_url, ...projectImageUrls]);
       })
       .catch(err => console.log("Error while uploading the file: ", err));
+    })
   };
 
     return (
@@ -74,16 +85,7 @@ const handleSubmit = e => {
         {/* file upload img cloudinary */}
         <div>
             <h2>Upload images</h2>
-            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
-        </div>
-        <div>
-            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
-        </div>
-        <div>
-            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
-        </div>
-         <div>
-            <input id="projectImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
+            <input id="projectImages" name="projectImageUrls" type="file" onChange={(e) => handleFileUpload(e)} multiple/>
         </div>
         <button type='submit'>Create Project</button>
     </form>

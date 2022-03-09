@@ -13,13 +13,19 @@ router.get('/', (req, res, next) => {
 });
 
 // upload file to cloudinary
-router.post('/upload', fileUploader.single("projectImageUrl"), (req, res, next) => {
-  console.log("file is:", req.file)
-  if(!req.file) {
+router.post('/upload', fileUploader.array("projectImageUrls", 5), (req, res, next) => {
+  console.log("file is:", req.files)
+  if(!req.files) {
     next(new Error("No file uploaded!"))
     return
   }
-  res.json({ secure_url: req.file.path })
+  const urls = []
+  for (let file of req.files){
+    const { path } = file;
+    urls.push(path)
+  }
+  console.log("urls", urls)
+  res.json({ secure_url: urls })
 })
 
 // create a project
