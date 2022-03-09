@@ -41,30 +41,44 @@ export default function Login() {
 
 	return (
 		<> 
-            <div>
-			<h1>Login</h1>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="email">Email </label>
-				<input
-					type="text"
-					name='email'
-					value={email}
-					onChange={handleEmail} />
-				<label htmlFor="password">Password: </label>
-				<input
-					type="password"
-					name='password'
-					value={password}
-					onChange={handlePassword} />
-				<button type="submit">Log In</button>
-			</form>
+            <div className='signup-background'>
+				<div className='sign-box'>
+					<div>
+						<h3>Login</h3>
+					</div>
 
-			{errorMessage && <h5>{errorMessage}</h5>}
-            </div>
+					<div>			
+						<form onSubmit={handleSubmit}>
+							<div className='signup-box-together'>
+								<div className='signup-text-input'><label htmlFor="email">Email </label></div>
+								<input className='signup-input-box'
+								type="text"
+								name='email'
+								value={email}
+								placeholder={email}
+								onChange={handleEmail} />
+							</div>
 
-			<div>
-				<p>Don't have an account yet?</p>
-			    <Link to='/signup'>Signup</Link>
+							<div className='signup-box-together'>
+								<div className='signup-text-input'><label htmlFor="password">Password: </label></div>
+								<input className='signup-input-box'
+								type="password"
+								name='password'
+								value={password}
+								placeholder='******'
+								onChange={handlePassword} />
+							</div>
+							<div>
+								<button type="submit" class="glow-on-hover">Log In</button>
+							</div>
+						</form>
+            		</div>
+					{errorMessage && <h3>{errorMessage}</h3>}
+
+					<div>
+						Don't have an account?<Link to='/signup'>Signup</Link>
+					</div>
+				</div>
             </div>
 		</>
 	)

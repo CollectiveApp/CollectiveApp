@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import TypeFilterEvent from "../components/TypeFilterEvent";
 
 
+
 export default function EventsVisitors(){
 
     
@@ -78,24 +79,26 @@ export default function EventsVisitors(){
         <div>
             <EventNavbar />
         </div>
-        <div>
-            <div>
+        <div className="events-view-back">
+            <div className="filters-box">
+                <p>Filter</p>
                 <DateFilterEvent eventDate={eventDate} setEventDateProp={setEventDate}/>
                 <button onClick={handleClean}>clean</button> 
                 <SearchBarEvent setQueryProp={setQuery}/>
-                <ToggleEvent setCheckProp={setToggle}/>
                 <TypeFilterEvent type={type} setTypeProp={setType}/>
+                <ToggleEvent setCheckProp={setToggle}/>
                 
             </div>
             <div>
             {filteredEvents.map(event =>{
             return(
                 <div key={event._id}>
+                    <div>{event.eventPicture}</div>
                     <h5>{event.eventName}</h5>
                     <div>{event.eventDescription}</div>
                     <Link to={`/events/${event._id}`}>Details</Link>
                 </div>)
-        })}
+            })}
 
                 
             </div>
