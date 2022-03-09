@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
+import EventNavbar from '../components/EventNavbar';
 
 export default function ProjectDetails() {
 
@@ -19,6 +20,9 @@ const storedToken = localStorage.getItem('authToken')
 
 	return (
 	<>
+		<div>
+			<EventNavbar />
+		</div>
 			{project === null ? <div>Loading ...</div> :
 			<>
 				{project.projectImageUrl.map(image => { 

@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 import ToggleEvent from "../components/ToggleEvent";
 import axios from 'axios'
 import { Link } from "react-router-dom";
-import TypeFilterEvent from "../components/TypeEventFilter";
+import TypeFilterEvent from "../components/TypeFilterEvent";
+
 
 
 export default function EventsVisitors(){
@@ -15,9 +16,9 @@ export default function EventsVisitors(){
 
     const [events, setEvents] = useState(null)
     const [query, setQuery] = useState('')
-    const [eventDate ,setEventDate] = useState()
+    const [eventDate ,setEventDate] = useState('')
     const [toggle, setToggle] = useState(false)
-    const [type, setType] = useState('all')
+    const [type, setType] = useState('')
 
     
 
@@ -37,6 +38,10 @@ export default function EventsVisitors(){
 
    useEffect(()=> {getAllEvents()}, [])
 
+   const handleClean = () => {
+       setEventDate('')
+   }
+
     let filteredEvents;
 
     if(events){
@@ -44,48 +49,56 @@ export default function EventsVisitors(){
        return event.eventName.toLowerCase().includes(query)
     })}
 
+    
+    if(events && eventDate){
+        filteredEvents = filteredEvents.filter(event =>{
+            return event.eventDate === eventDate
+         })
+    }
+
     if(toggle){
-         filteredEvents = filteredEvents.filter(event => {
-           return event.eventOutdoor === true
+         filteredEvents = filteredEvents.filter(event =>{
+            return event.eventOutdoor === true
         })
     }
     
-    // if(type === 'all'){
-    //     return filteredEvents
-    // }else{
-    //     filteredEvents = filteredEvents.filter( event =>{
-    //         event.eventType = type
-    //     })
-    // }
+    if(type !== ''){
+       filteredEvents = filteredEvents.filter( event =>{
+           return event.eventType.toLowerCase() === type.toLowerCase()
+       })
+    }
    
     
     if(events === null){
-        return <></>
+        return <>Loading...</>
     }
 
-
+    
     return(
         <>
         <div>
             <EventNavbar />
         </div>
-        <div>
-            <div>
-                <DateFilterEvent setDateProp={setEventDate}/>
+        <div className="events-view-back">
+            <div className="filters-box">
+                <p>Filter</p>
+                <DateFilterEvent eventDate={eventDate} setEventDateProp={setEventDate}/>
+                <button onClick={handleClean}>clean</button> 
                 <SearchBarEvent setQueryProp={setQuery}/>
+                <TypeFilterEvent type={type} setTypeProp={setType}/>
                 <ToggleEvent setCheckProp={setToggle}/>
-                <TypeFilterEvent setTypeProp={setType}/>
                 
             </div>
             <div>
             {filteredEvents.map(event =>{
             return(
                 <div key={event._id}>
+                    <div>{event.eventPicture}</div>
                     <h5>{event.eventName}</h5>
                     <div>{event.eventDescription}</div>
-                    <Link to={`/events/${event._id}`}>Details & Volunteer</Link>
+                    <Link to={`/events/${event._id}`}>Details</Link>
                 </div>)
-        })}
+            })}
 
                 
             </div>

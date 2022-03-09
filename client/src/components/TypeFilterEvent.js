@@ -1,13 +1,10 @@
-import { useState } from "react"
-import Dropdown from "./TypeEventsDropdown"
 
 
+export default function TypeFilterEvent(props){
 
-export default function TypeFilterEvent(){
-
-    const [value, setValue] = useState('')
+    
     const options = [
-        {label:'All', value:'all'},
+        {label:'See All', value:''},
         {label: 'Music', value: 'music' },
         {label: 'Food', value: 'food'},
         {label: 'Sports', value: 'sports' },
@@ -17,9 +14,9 @@ export default function TypeFilterEvent(){
         {label: 'Social Volunteer', value: 'social volunteer' },
     ]
 
-    const handleChange = event =>{
-        setValue(event.target.value)
-    }
+    console.log('this are the props', props)
+
+    
 
     return(
         <>
@@ -27,10 +24,13 @@ export default function TypeFilterEvent(){
             Event Type
         </div>
         <div>
-            <Dropdown
-            options={options}
-            value={value}
-            onChange={handleChange}/>
+        <label>
+            <select className="filterEvent-input-box" value={props.type} onChange={(event => props.setTypeProp(event.target.value))}>
+                {options.map((option) => (
+                <option value={option.value}>{option.label}</option>
+                ))}
+            </select>
+        </label>
         </div>
         </>
     )

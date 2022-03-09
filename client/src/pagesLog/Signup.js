@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
+
 const API_URL='http:localhost:5005'
 
 export default function Signup() {
@@ -35,36 +36,61 @@ export default function Signup() {
 
 	return (
 		<>
-            <div>
-			<h1>Signup</h1>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="email">Email </label>
-				<input 
-					type="text"
-					name='email'
-					value={email}
-					onChange={handleEmail} />
-				<label htmlFor="password">Password </label>
-				<input
-					type="password"
-					name='password'
-					value={password}
-					onChange={handlePassword} />
-				<label htmlFor="name">Admin name </label>
-				<input
-					type="text"
-					name='name'
-					value={name}
-					onChange={handleName} />
-				<button type="submit">Sign Up</button>
-			</form>
+			<div className='signup-background'>
+            	<div className='sign-box'>
+					<div>
+						<h3>Signup</h3>
+					</div>
 
-			{errorMessage && <h5>{errorMessage}</h5>}
-            </div>
+					<div>
+						<form onSubmit={handleSubmit}>
+							<div className='signup-box-together'>
+								<div className='signup-text-input'><label htmlFor="email">Email </label></div>
+								<input className='signup-input-box'
+								type="text"
+								name='email'
+								value={email}
+								placeholder='foo@foo.com'
+								onChange={handleEmail} />
+							</div>
 
-            <div>
-			<Link to='/login'>Login</Link>
-            </div>
+							<div className='signup-box-together'>
+								<div className='signup-text-input'><label htmlFor="password">Password </label></div>				
+								<input className='signup-input-box'
+								type="password"
+								name='password'
+								value={password}
+								placeholder='******'
+								onChange={handlePassword} />
+							</div>
+
+							<div className='signup-box-together'>
+								<div className='signup-text-input'><label for="cpassword">Confirm Password</label></div>
+          						<input type="password" id="cpassword" name="cpassword" placeholder='******' className='signup-input-box' required="required"/>
+							</div>
+							<div className='signup-box-together'>
+				  				<div className='signup-text-input'><label htmlFor="name">Admin name </label></div>
+								<input className='signup-input-box'
+								type="text"
+								name='name'
+								value={name}
+								placeholder='Foo'
+								onChange={handleName} />
+							</div>
+							<div>
+								<button class="glow-on-hover" type="submit">Sign Up</button>
+							</div>
+						</form>
+					</div>
+
+					{errorMessage && <h5>{errorMessage}</h5>}
+            	
+
+            		<div>
+						Already have an Account?<Link to='/login'>Login</Link>
+            		</div>
+				</div>
+			</div>
 		</>
 	)
 }
