@@ -6,7 +6,7 @@ export default function EventNavbar (){
         <>
         <Link to='/Projects'>Projects</Link>
         <Link to='/Events'>Events</Link>
-        <Link to='Volunteer'>Volunteer</Link>
+        <Link to='/Volunteer'>Volunteer</Link>
         </>
     )
 }
