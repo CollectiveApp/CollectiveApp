@@ -4,9 +4,11 @@ export default function EventNavbar (){
 
     return(
         <>
-        <Link to='/Projects'>Projects</Link>
-        <Link to='/Events'>Events</Link>
-        <Link to='Volunteer'>Volunteer</Link>
+        <nav>
+            <Link className="nav-link" to='/Projects'>Projects</Link>
+            <Link className="nav-link" to='/Events'>Events</Link>
+            <Link className="nav-link" to='/'>Home</Link>
+        </nav>
         </>
     )
 }

@@ -27,8 +27,9 @@ const getAllProjects = () => {
 useEffect(() => {getAllProjects()}, [])
 
     return(
-      <>     
-        <div><h1>Upcoming Projects</h1></div>
+      <>
+        <div className='project-container'> 
+        <div className='heading-project-container'><h1>Upcoming Projects</h1></div>
         {projects.map(project => {
             return (
                 <div key={project._id}>
@@ -40,6 +41,7 @@ useEffect(() => {getAllProjects()}, [])
             )
         })
         }
+        </div>  
       </>
     )
 }
