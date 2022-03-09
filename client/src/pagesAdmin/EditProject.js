@@ -23,7 +23,7 @@ export default function EditProject(props) {
 			})
 			.catch(err => console.log(err))
 	}
-   // ******** this method handles just the file upload ********
+  // ******** this method handles just the file upload ********
  const handleFileUpload = e => {
   // console.log("The file to be uploaded is: ", e.target.files[0]);
   const uploadData = new FormData();

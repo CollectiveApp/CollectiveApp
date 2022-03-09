@@ -9,7 +9,7 @@ const ProjectSchema = new Schema(
     projectEndDate: String,
     projectDescription: String,
     projectSkillsNeeded: String,
-    projectImageUrl: [String],
+    projectImageUrls: [String],
     volunteerApplications: [{
       type: Schema.Types.ObjectId,
       ref: 'Volunteer'
