@@ -1,4 +1,6 @@
 import './App.css';
+import './login.css';
+import './EventsVisitors.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pagesVisitor/Home'
 import Projects from './pagesVisitor/Projects'

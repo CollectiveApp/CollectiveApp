@@ -8,7 +8,7 @@ export default function SearchBarEvent(props){
     return (
         <>
             <div>search</div>
-            <input type="search" onChange={handleInputChange} />
+            <input className='filterEvent-input-box' type="search" onChange={handleInputChange} />
         </>
     )
 }

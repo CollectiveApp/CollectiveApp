@@ -143,3 +143,12 @@
   cursor: pointer;
 } */
 
+.signup {
+  background-image: url('/public/nadja.jpg');
+  width: 100vw;
+  height:100vh;
+}
+
+.sign-box{
+
+}

@@ -1,0 +1,33 @@
+.events-view-back {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0);
+    background-size: cover;
+    background-position: center;
+}
+
+.filters-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(220, 220, 220, 0.575);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.filterEvent-input-box{
+  
+    border-top: 0px;
+    border-left:0px;
+    border-bottom-style: 1px;
+    border-right: 0px; 
+    border-color: black;
+    background-color: white;
+    width: 150px;
+   
+}
