@@ -13,7 +13,7 @@ const storedToken = localStorage.getItem('authToken')
 const getAllProjects = () => {
   // request 'api/projects'
   // for every request to a project route we need to also send the token
-  axios.get('/api/project/', { headers: { Authorization: `Bearer ${storedToken}` } })
+  axios.get('/api/projects/', { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
           // log response from db
           console.log('response.data',response.data)

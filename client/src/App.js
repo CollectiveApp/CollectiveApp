@@ -7,6 +7,8 @@ import Events from './pagesVisitor/Events'
 import Volunteer from './pagesVisitor/Volunteer'
 import AdminDashboard from './pagesAdmin/AdminDashboard';
 import EditProject from './pagesAdmin/EditProject';
+import ProjectVolunteerList from './pagesAdmin/ProjectVolunteerList';
+import VolunteersFullList from './pagesAdmin/VolunteersFullList';
 import EditEvent from './pagesAdmin/EditEvent';
 import Login from './pagesLog/Login'
 import Signup from './pagesLog/Signup';
@@ -35,7 +37,9 @@ function App() {
   {/* Admin */}
     <Route path='/behind-the-scences' element={<IsPrivate> <AdminDashboard /> </IsPrivate>} />
     <Route path='/behind-the-scences/project/edit/:id' element={<IsPrivate> <EditProject /> </IsPrivate>} />
+    <Route path='behind-the-scences/project/volunteer/:id' element={<ProjectVolunteerList />}/>
     <Route path='/behind-the-scences/event/edit/:id' element={<IsPrivate> <EditEvent /> </IsPrivate>} />
+    <Route path='/behind-the-scences/volunteers/fullList' element={<VolunteersFullList />} />
   </Routes>
   </div>
   );

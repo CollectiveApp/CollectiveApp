@@ -16,7 +16,7 @@ export default function EditProject(props) {
   const handleEdit = e => {
     e.preventDefault()
 		const requestBody = { projectName, projectLocation, projectStartDate, projectEndDate, projectDescription, projectSkillsNeeded, projectImageUrl }
-		axios.put(`/api/project/${props.specificproject._id}`, requestBody)
+		axios.put(`/api/projects/${props.specificproject._id}`, requestBody)
 			.then(() => {
         // actualize the projects rendered
         props.refreshProjects()
@@ -40,7 +40,7 @@ export default function EditProject(props) {
 
   // get specific project from backend to edit it
   const getProjectToEdit = () => {
-		axios.get(`/api/project/${props.specificproject._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+		axios.get(`/api/projects/${props.specificproject._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(response => {
       console.log('axiosgetproject', response.data);	
         const { projectName } = response.data

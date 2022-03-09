@@ -1,5 +1,4 @@
 const Event = require("../models/Event");
-
 const router = require("express").Router();
 
 // get all events

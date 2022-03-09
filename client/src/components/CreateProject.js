@@ -15,7 +15,7 @@ const [projectImageUrl, setProjectImageUrl] = useState([]);
 const handleSubmit = e => {
     e.preventDefault()
     // send the data from the state as a post request to the backend
-	axios.post('/api/project/create', { 
+	axios.post('/api/projects/create', { 
         projectName,
         projectLocation,
         projectStartDate,
