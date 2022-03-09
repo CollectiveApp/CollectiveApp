@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import Maps from './Maps';
+import PlacesAutocomplete from './autocompleteBar';
 
 
 
@@ -63,7 +65,7 @@ export default function CreateEvent(props) {
   const handleEventDate= e => setEventDate(e.target.value)
   const handleEventTime = e => setEventTime(e.target.value)
   const handleEventType = e => setEventType(e.target.value)
-  const handleEventLocation = e => setEventLocation(e.target.value)
+  // const handleEventLocation = e => setEventLocation(e.target.value)
   const handleCheckBox = e => setEventOutdoor(e.target.checked)
 
   return (
@@ -77,8 +79,6 @@ export default function CreateEvent(props) {
         <input type="date" value={eventDate} onChange={handleEventDate}></input>
         <label htmlFor='Time'>Time</label>
         <input type="time" value={eventTime} onChange={handleEventTime}></input>
-        <label htmlFor='Location'>Location</label>
-        <input type="text" value={eventLocation} onChange={handleEventLocation}></input>
         <div>
             Event Type
         </div>
@@ -110,6 +110,14 @@ export default function CreateEvent(props) {
             <label htmlFor='Outdoor'>Outdoor</label>
             <input type="checkBox" value={eventOutdoor} onChange={handleCheckBox}/>
         </div>
+        
+        {/* <label htmlFor='Location'>Location</label>
+        <input type="text" value={eventLocation} onChange={handleEventLocation}></input> */}
+        
+        {/* <PlacesAutocomplete eventLocation={eventLocation} setEventLocationProp={setEventLocation} />
+        <div>
+          <Maps />
+        </div> */}
         
                 
         <button type='submit'>Submit New Event</button>

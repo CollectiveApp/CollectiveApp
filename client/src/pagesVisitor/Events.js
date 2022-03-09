@@ -93,7 +93,7 @@ export default function EventsVisitors(){
                 <div key={event._id}>
                     <h5>{event.eventName}</h5>
                     <div>{event.eventDescription}</div>
-                    <Link to={`/events/${event._id}`}>Details & Volunteer</Link>
+                    <Link to={`/events/${event._id}`}>Details</Link>
                 </div>)
         })}
 

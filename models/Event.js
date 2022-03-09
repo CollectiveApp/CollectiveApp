@@ -9,7 +9,7 @@ const EventSchema = new Schema(
     eventTime: String,
     eventDescription: String,
     eventType: String,
-    eventPicture: [String],
+    eventPicture: String,
     eventOutdoor: Boolean,
   },
   {
