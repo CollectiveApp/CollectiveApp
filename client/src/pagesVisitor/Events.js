@@ -45,8 +45,8 @@ export default function EventsVisitors(){
     })}
 
     if(toggle){
-         filteredEvents = filteredEvents.filter(event =>{
-            event.eventOutdoor === true
+         filteredEvents = filteredEvents.filter(event => {
+           return event.eventOutdoor === true
         })
     }
     

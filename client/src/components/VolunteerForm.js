@@ -14,6 +14,7 @@ export default function VolunteerForm() {
     const [timeFrom, setTimeFrom] = useState('');
     const [timeTo, setTimeTo] = useState('');
     const [experience, setExperience] = useState('');
+    const [hasTools, setHasTools] = useState(false)
     const [tools, setTools] = useState('');
     const [personalMessage, setPersonalMessage] = useState('');
     const [projectAppliedFor, setProjectAppliedFor] = useState('');
@@ -35,6 +36,7 @@ export default function VolunteerForm() {
             timeFrom,
             timeTo,
             experience,
+            hasTools,
             tools,
             personalMessage,
             projectAppliedFor: id
@@ -54,6 +56,7 @@ export default function VolunteerForm() {
             setTimeFrom('')
             setTimeTo('')
             setExperience('')
+            setHasTools(false)
             setTools('')
             setPersonalMessage('')
             setProjectAppliedFor('')
@@ -61,7 +64,7 @@ export default function VolunteerForm() {
 
   return (
   <>  
-    <div>VolunteerForm</div>
+    <p>Fill out the form to become a Volunteer</p>
     <form onSubmit={handleSubmit}>
             {/* <label>Picture: </label>
                 <input id="pictureUrl" name="pictureUrl"  type="file"/> */}
@@ -80,8 +83,14 @@ export default function VolunteerForm() {
                 <input id="timeTo" name="timeTo" type="date" placeholder='...until' value={timeTo} onChange={e => setTimeTo(e.target.value)}/>
             <label>With what are you experienced? Any special skills? </label>
                 <input id="experience" name="experience" type="text" placeholder='Experience' value={experience} onChange={e => setExperience(e.target.value)}/>
-            <label>Can you bring tools? Which ones? </label>
-                <input id="tools" name="tools" type="text" placeholder='tools' value={tools} onChange={e => setTools(e.target.value)}/>
+            <label>Can you bring tools? </label>
+                <input id="hasTools" name="hasTools" type="checkbox" value={hasTools} onChange={e => setHasTools(e.target.checked)}/> Yes
+                <input name="no" type="checkbox"/> No
+            {hasTools && <label>Which ones? </label>
+                }
+            {hasTools && 
+                <input id="tools" name="tools" type="text" placeholder='Tools' value={tools} onChange={e => setTools(e.target.value)}/>
+            }
             <label>Leave us a message</label>
                 <input id="personalMessage" name="personalMessage" type="text" placeholder='Something you wanna tell us?' value={personalMessage} onChange={e => setPersonalMessage(e.target.value)}/>
             <button type='submit'>Apply to Volunteer</button>
