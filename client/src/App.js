@@ -1,4 +1,7 @@
 import './App.css';
+import './Home.css';
+import './EventNavbar.css';
+import './ProjectListVisitor.css';
 import './login.css';
 import './EventsVisitors.css'
 import { Routes, Route } from 'react-router-dom'

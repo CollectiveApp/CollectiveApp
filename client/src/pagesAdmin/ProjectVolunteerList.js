@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
-
 import VolunteersProjectSearchBar from '../components/VolunteersProjectSearchBar';
-
+import VolunteerToggle from '../components/VolunteerToggle';
 
 export default function ProjectVolunteerList() {
 
 const { id } = useParams();
 const [project, setProject] = useState('');
+const [toggle, setToggle] = useState(false)
 const [search, setSearch] = useState('');
 
 const storedToken = localStorage.getItem('authToken')
@@ -33,10 +33,17 @@ if(project === '') {
       return application
     }
   })
+  // toggle checkbos to get appl. with tools
+  if(toggle){
+    filteredApplications = filteredApplications.filter(application => {
+      return application.hasTools === true
+   })
+  }
 
   return (
     <>
     <VolunteersProjectSearchBar project={project} setSearch={setSearch} search={search}/>
+    <VolunteerToggle setToggle={setToggle}/>
     <div style={{ display: 'flex', justifyContent: 'center' }}>
           <table>
             <thead>
@@ -49,11 +56,11 @@ if(project === '') {
                 <th>Available from</th>
                 <th>Available to</th>
                 <th>Experience</th>
+                <th>Has Tools</th>
                 <th>Tools</th>
                 <th>Message</th>
               </tr>
             </thead>
-            <hr/>
             <tbody>
             {filteredApplications.map(application => {
               console.log('application', application)
@@ -68,10 +75,10 @@ if(project === '') {
                   <td>{application.timeFrom}</td>
                   <td>{application.timeTo}</td>
                   <td>{application.experience}</td>
+                  <td>{application.hasTools && 'X'}</td>
                   <td>{application.tools}</td>
                   <td>{application.personalMessage}</td>
               </tr>
-              <hr/>
               </>
               )
             })}

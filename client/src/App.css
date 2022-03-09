@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -77,7 +78,7 @@
   font-size: 20px;
 }
 
-
+/* toggle Checkbox */
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -115,8 +116,6 @@
 }
 .toggle-switch input[type="checkbox"]:checked + .switch {
   background-color: #66cc6b81;
-}
-
 
 .map-container {
   height: 400px;

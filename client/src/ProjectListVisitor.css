@@ -1,0 +1,10 @@
+.project-container {
+    background-color: rgba(240, 162, 66, 0.61);
+}
+.heading-project-container {
+    width: 100vw;
+    background-color: rgba(212, 58, 117);
+    color: rgb(240, 162, 66);
+    height: 10vh;
+    text-align: center;
+}

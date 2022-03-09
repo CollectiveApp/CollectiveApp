@@ -33,6 +33,7 @@ const VolunteerSchema = new Schema(
         type: String,
         required: true
     },
+    hasTools: Boolean,
     tools: String,
     personalMessage: String
   }
