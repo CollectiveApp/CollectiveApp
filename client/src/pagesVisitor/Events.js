@@ -72,8 +72,6 @@ export default function EventsVisitors(){
     if(events === null){
         return <>Loading...</>
     }
-
-    //test
     
     return(
         <div className="events-view-background">

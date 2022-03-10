@@ -17,10 +17,14 @@ function AuthProviderWrapper(props) {
 		localStorage.setItem('authToken', token)
 	}
 
+	const removeToken = () => {                    
+		// Upon logout, remove the token from the localStorage
+		localStorage.removeItem("authToken");
+	}
+
 	const logoutAdmin = () => {
-		// remove the token from local storage
-		localStorage.removeItem('authToken')
 		// update the state
+		//removeToken()
 		setIsLoggedIn(false)
 		setAdmin(null)
 	}
@@ -56,6 +60,7 @@ function AuthProviderWrapper(props) {
 		// check if we have an auth token stored
 		authenticateAdmin()
 		authenticateAdmin()
+		logoutAdmin() 
 	}, [])
 
 	return (

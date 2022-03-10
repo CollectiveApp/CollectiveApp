@@ -8,28 +8,33 @@ export default function AdminDashboard() {
 
   return (
     <>
-    
-        <h1>Welcome to your Dashboard!</h1>
-        <div>
-            <Navbar />
-            
-            <h1>Projects</h1>
+        <div className='dashboard-back'>
             <div>
-                <ProjectList />
+                <Navbar />
             </div>
-            
-            <>
-            <h1>Events</h1>
-                <div>
-                    <EventList />
+            <div className='dash-body'>
+                <div className='dash-box'>
+                    <div>
+                        <ProjectList />
+                    </div>
                 </div>
-            </>
-            <>
-            <h1>Volunteers</h1>
-                <div>
-                   <Link to={'/behind-the-scences/volunteers/fullList'}>Volunteers Database</Link>
+                <div className='dash-box'>
+                    <div>
+                        <h3>Events</h3>
+                    </div>
+                    <div>
+                        <EventList />
+                    </div>
                 </div>
-            </>
+                <div className='dash-box'>
+                    <div>
+                        <h1>Volunteers</h1>
+                    </div>
+                    <div>
+                        <Link to={'/behind-the-scences/volunteers/fullList'}>Volunteers Database</Link>
+                    </div>
+                </div>
+            </div>
         </div>
     </>
   )

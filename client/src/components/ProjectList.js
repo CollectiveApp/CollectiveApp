@@ -35,12 +35,19 @@ useEffect(() => {getAllProjects()}, [])
 
     return(
       <>
-      <button onClick={() => setShowCreateProject(!showCreateProject)}>Create Project</button>
+          <div className='dash-title-box'>
+            <div className='dash-titles'>
+              Projects
+            </div>
+            <div>
+              <button onClick={() => setShowCreateProject(!showCreateProject)}>Create Project</button>
                 {showCreateProject && (
                   <PopUpCreateProject refreshProjects={getAllProjects} handleClose={() => setShowCreateProject(false)}/>
                 )}
-      
-        {projects.map(project => {
+            </div>
+          </div>
+          <div>
+            {projects.map(project => {
                 return (
                 <div key={project._id}>
                   <h1>{project.projectName}</h1>
@@ -58,9 +65,12 @@ useEffect(() => {getAllProjects()}, [])
                       .catch(err => console.log(err))
                   }}>Delete</button>
                   <Link to={`/behind-the-scences/project/volunteer/${project._id}`}>See Applications</Link>
+                  <hr className='dash-line'></hr>
                 </div>
                 )}
                 )}
+                
+          </div>
       </>
     )  
 }
