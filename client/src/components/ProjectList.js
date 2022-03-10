@@ -49,13 +49,13 @@ useEffect(() => {getAllProjects()}, [])
           <div>
             {projects.map(project => {
                 return (
-                <div key={project._id}>
-                  <h1>{project.projectName}</h1>
-                  <button onClick={() => {handleProjectToBeEdited(project)}}>Edit</button>
+                <div key={project._id} className='dash.list'>
+                  <h3>{project.projectName}</h3>
+                  <button className='dash-edit-button' onClick={() => {handleProjectToBeEdited(project)}}>Edit</button>
                     {projectToBeEdited && <PopUpEditProject
                     handleClose={() => {setProjectToBeEdited(null)}} thisproject={projectToBeEdited} refreshProjects={getAllProjects}/>
                     }
-                  <button onClick={()=>{
+                  <button className='dash-delete-button' onClick={()=>{
                     axios.delete(`/api/projects/${project._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
                       .then(deletedProject => {
                         console.log('deletedProject', deletedProject)
@@ -64,7 +64,7 @@ useEffect(() => {getAllProjects()}, [])
                         })
                       .catch(err => console.log(err))
                   }}>Delete</button>
-                  <Link to={`/behind-the-scences/project/volunteer/${project._id}`}>See Applications</Link>
+                  <Link className='nav-link-admin' to={`/behind-the-scences/project/volunteer/${project._id}`}>See Applications</Link>
                   <hr className='dash-line'></hr>
                 </div>
                 )}
