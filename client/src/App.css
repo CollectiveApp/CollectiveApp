@@ -116,7 +116,7 @@
 }
 .toggle-switch input[type="checkbox"]:checked + .switch {
   background-color: #66cc6b81;
-
+}
 .map-container {
   height: 400px;
 }

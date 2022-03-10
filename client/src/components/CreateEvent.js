@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import Maps from './Maps';
 import PlacesAutocomplete from './autocompleteBar';
+import service from '../api/service'
 
 
 
