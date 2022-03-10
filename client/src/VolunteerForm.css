@@ -5,3 +5,19 @@
     background-repeat: repeat;
     padding-bottom: 160px;
 }
+.project-container-volunteer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.volunteer-form {
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+.inputfield-container {
+    background-color: beige;
+}
