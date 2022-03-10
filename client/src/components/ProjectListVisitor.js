@@ -34,7 +34,7 @@ useEffect(() => {getAllProjects()}, [])
         {projects.map(project => {
             return (
                 <div className='single-project-container' key={project._id}>
-                  <h1 className='projectTitle'>{project.projectName.toUpperCase()}</h1>
+                  <h1 className='project-title'>{project.projectName.toUpperCase()}</h1>
                   <h2 className='project-text'>{project.projectLocation}</h2>
                   <h3 className='project-text'>{project.projectStartDate} - {project.projectEndDate}</h3>
                   <hr className='line-two'></hr>
