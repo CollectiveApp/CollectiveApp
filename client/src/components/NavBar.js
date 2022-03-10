@@ -7,7 +7,7 @@ import { AuthContext } from "../context/auth";
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
-  const { isLoggedIn, admin, logOutAdmin } = useContext(AuthContext);   // <== ADD
+  const { isLoggedIn, logOutAdmin } = useContext(AuthContext);   // <== ADD
 
   
   //  Update the rendering logic to display different content 
@@ -15,16 +15,16 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">
-        <button>Visitors view</button>
+        <img className="logo-nav" src="/images/logo_gelb.png" alt="Logo"/>
       </Link>
 
       {/*    UPDATE     */}
       {isLoggedIn && (
         <>
-          <Link to="/behind-the-scences">
-            <button>Admin Dashboard</button>
-          </Link>        
-          <button>Logout</button>
+          {/* <Link to='/logout'>
+            <img className="logout" src="/images/logout.png" alt="Logout"/>
+          </Link> */}
+          <button className="nav-link" onClick={logOutAdmin}>logout</button>    
         </>
       )}
 

@@ -80,6 +80,8 @@ router.post('/login', (req, res, next) => {
 		})
 });
 
+
+
 // GET  /auth/verify  -  Used to verify JWT stored on the client
 router.get('/verify', isAuthenticated, (req, res, next) => {       
  
