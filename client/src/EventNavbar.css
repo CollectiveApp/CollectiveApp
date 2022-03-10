@@ -1,6 +1,6 @@
 nav {
     background-color: bisque;
-    height: 10vh;
+    height: 11vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -14,3 +14,6 @@ nav {
     margin-right: 10px;
     padding-bottom: 10px;
   }
+.logo-nav {
+    width: 6vw;
+}

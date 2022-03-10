@@ -6,8 +6,8 @@ export default function EventNavbar (){
         <>
         <nav>
             <Link className="nav-link" to='/Projects'>PROJECTS</Link>
+            <Link to='/'><img className="logo-nav" src="/images/logo_gelb.png" alt="Logo"/></Link>
             <Link className="nav-link" to='/Events'>EVENTS</Link>
-            <Link className="nav-link" to='/'>HOME</Link>
         </nav>
         </>
     )

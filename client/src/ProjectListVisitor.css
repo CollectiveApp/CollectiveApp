@@ -1,25 +1,31 @@
 .bg-overlay{
 	width: 100%;
-    background: linear-gradient(0deg, #b3732580, rgba(255 0 150 / 59%)), url('../public/images/rs_logo.png');
+    background: linear-gradient(0deg, rgba(179 115 37 /90%), rgba(255 0 150 / 61%)), url('../public/images/rs_logo.png');
     background-repeat: repeat;
+    padding-bottom: 50px;
 }
 .heading-project-container {
     width: 100vw;
+    padding-top: 15px;
     padding-bottom: 15px;
     background-color:#ffe4c480;
-    color:rgb(165, 32, 50);
+    color:#1ae6db;
     font-size: 24px;
     display: flex;
     justify-content: center;
 }
+/* .project-visible {
+    height: 30vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(255, 228, 196, 0.37);
+} */
 .project-container {
-    margin-left: 300px;
-    margin-right: 300px;
-    margin-top: 30px;
-    margin-bottom:30px;
-    padding-top: 20px;
-    background-color:#ffe4c4b2;
-    border-radius: 50px;
+    margin: 30px 300px 0px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background-color:#ffe4c480;
+    border-radius: 60px;
 }
 .single-project-container {
     background-color:#ffe4c4;
@@ -28,15 +34,20 @@
     border-radius: 50px;
 }
 .projectTitle {
-    color:rgb(165, 32, 50);
-    font-size: 28px;
+    color:#16f1e7;
+    font-size: 30px;
 }
 .project-text {
-    color:rgb(165, 32, 50);
+    color:#16f1e7;
     font-size: 20px;
 }
 .project-link {
     text-decoration: none;
-    color:rgb(165, 32, 50);
+    color:whitesmoke;
     font-size: 20px;
+}
+.line {
+    width: 40vw;
+    border: 1px solid rgba(37, 195, 206, 0.329);
+    border-radius: 50px;
 }
