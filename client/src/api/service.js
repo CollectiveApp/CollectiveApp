@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: "http://localhost:5005/api"
+  baseURL: "https://collective-app-2.herokuapp.com/api"
   // withCredentials: true // => you might need this option if using cookies and sessions
 });
 

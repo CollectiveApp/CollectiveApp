@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 
-const API_URL='hhtp://localhost:5005';
+const API_URL='https://collective-app-2.herokuapp.com';
 const AuthContext = React.createContext()
 
 function AuthProviderWrapper(props) {

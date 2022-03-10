@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3f72f542.css",
+    "main.js": "/static/js/main.8dc69664.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/ramschloss.jpg": "/static/media/ramschloss.6729c18154c15f9750cc.jpg",
+    "static/media/login_background.jpg": "/static/media/login_background.52d12904f63d700984c6.jpg",
+    "static/media/rs_logo.png": "/static/media/rs_logo.a3cb5654e0988a180136.png",
+    "static/media/nadja.jpg": "/static/media/nadja.faf0f2a3bf3a01a1399d.jpg",
+    "index.html": "/index.html",
+    "main.3f72f542.css.map": "/static/css/main.3f72f542.css.map",
+    "main.8dc69664.js.map": "/static/js/main.8dc69664.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3f72f542.css",
+    "static/js/main.8dc69664.js"
+  ]
+}

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 
-const API_URL='http:localhost:5005'
+const API_URL='https://collective-app-2.herokuapp.com'
 
 export default function Signup() {
 
