@@ -24,8 +24,8 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin-top: 150px;
-   
-
+    padding-left: 2%;
+    padding-right: 2%;
 }
 .dash-titles{
     font-size: 30px;
@@ -39,7 +39,17 @@
     justify-content: space-between;
     align-items: baseline;
     height: fit-content;
-
+    margin-top: 5%;
+}
+.dash-title-box-2{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.651);
+    color: rgb(255 153 102);
+    justify-content: space-between;
+    align-items: baseline;
+    height: fit-content;
+    margin-top: 10%;
 }
 .dash-line{
     width: 90%;
@@ -51,22 +61,100 @@
     position: fixed;
     width: 100%;
 }
+.dash-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   
+}
 .button-create{
+    display: inline-block ;
+    padding: 0.2em 1.45em;
+    margin: 25px;
+    border:0.15em solid #CCCCCC;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Segoe UI','Roboto',sans-serif;
+    font-weight:400;
+    color:#000000;
+    text-align:center;
     align-items: center;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-    cursor: pointer;
     font-size: 14px;
-    justify-content: center;
     max-width: 100%;
-    overflow: visible;
-    touch-action: manipulation;
-    margin: 25px;
-    height: 48px;
-    color: rgb(248, 123, 61);
-    
+    height: 48px; 
 }
+.button-create:hover{
+    border-color: rgb(61, 248, 70);
+    box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+.button-create:active{
+    background-color:#CCCCCC;
+}
+
+.dash-edit-button{
+    display: inline-block ;
+    padding: 0.2em 1.45em;
+    margin:0.1em;
+    border:0.15em solid #CCCCCC;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Segoe UI','Roboto',sans-serif;
+    font-weight:400;
+    color:#000000;
+    background-color:#CCCCCC;
+    text-align:center;
+}
+.dash-edit-button:hover{
+    border-color: rgb(248, 123, 61);
+    box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+.dash-edit-button:active{
+    background-color: white;
+}
+
+@media all and (max-width:30em){
+    a.button8{
+    display:block;
+    margin:0.2em auto;
+}}
+
+.dash-delete-button{
+    display: inline-block ;
+    padding: 0.2em 1.45em;
+    margin:0.1em;
+    border:0.15em solid #CCCCCC;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Segoe UI','Roboto',sans-serif;
+    font-weight:400;
+    color:#000000;
+    background-color:#CCCCCC;
+    text-align:center;
+}
+.dash-delete-button:hover{
+    border-color: rgb(248, 61, 61);
+    box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+.dash-delete-button:active{
+    background-color: rgb(248, 61, 61);
+}
+@media all and (max-width:30em){
+    a.button8{
+    display:block;
+    margin:0.2em auto;
+}}
+
+.nav-link-admin {
+    text-decoration: none;
+    color: rgb(252, 113, 49);
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 15px;
+    padding-bottom: 20px;
+  }
+
 .button-17 {
   align-items: center;
   appearance: none;
@@ -136,3 +224,4 @@
 .button-17:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
+

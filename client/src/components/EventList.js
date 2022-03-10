@@ -37,7 +37,7 @@ export default function EventList() {
     
     return(
         <>
-          <div className='dash-title-box'>
+          <div className='dash-title-box-2'>
             <div className='dash-titles'>
               Events
             </div>
@@ -48,15 +48,15 @@ export default function EventList() {
               )}
             </div>
           </div>
-            
+          <div>
             {events.map(event=>
-              <div key={event._id}>
-                <h1>{event.eventName}</h1>
-                <button onClick={()=> {handlePopupEdit(event)}}>Edit</button>
+              <div className='dash.list' key={event._id}>
+                <h3>{event.eventName}</h3>
+                <button className='dash-edit-button' onClick={()=> {handlePopupEdit(event)}}>Edit</button>
                   {eventToEdit && <PopupEditEvent
                   handleClose={() => {setEventToEdit(null)}} thisevent={eventToEdit} refreshEvents={getAllEvents}/>
                   }
-                <button onClick={()=>{
+                <button className='dash-delete-button' onClick={()=>{
                     axios.delete(`/api/event/${event._id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
                       .then(deletedProject => {
                         console.log('deletedEvent', deletedProject)
@@ -67,6 +67,7 @@ export default function EventList() {
                   }}>Delete</button>
                   <hr className='dash-line'></hr>
             </div>)}
+          </div>
         </>
     )  
 }
