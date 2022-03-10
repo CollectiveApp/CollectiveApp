@@ -6,6 +6,7 @@ import './login.css';
 import './EventsVisitors.css'
 import './ProjectDetails.css'
 import './VolunteerForm.css'
+import './EventDetails.css'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pagesVisitor/Home'
 import Projects from './pagesVisitor/Projects'

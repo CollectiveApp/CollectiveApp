@@ -20,20 +20,24 @@ export default function EventDetails() {
 
 	return (
 	<>
-		<div>
+		{event === null ? <div>Loading ...</div> :
+		<>
 			<EventNavbar />
-		</div>
-			{event === null ? <div>Loading ...</div> :
-			<>
-				<h1>{event.eventName}</h1>
-          		<h4>Location: {event.eventLocation}</h4>
-				<p>What the event is about: {event.eventDescription}</p>
-				<p>Category : {event.eventType}</p>
-				<p>Date of event: {event.eventDate}</p>
-				<p>Starting time: {event.eventTime}</p>
-				<div>{event.eventPicture}</div>
-			</>
-			}
+			<div className='bg-overlay-event-detail page-container'> 
+				<div className='heading-projectdetail-container'></div>
+				<div className='event-detail-container'>
+					<div>{event.eventPicture}</div>
+					<h1>{event.eventName}</h1>
+					<p>#{event.eventType}</p>
+					<h4><img className='map-icon' src='/images/placeholder.png' alt=''/>{event.eventLocation}</h4>
+					<p>{event.eventDate}</p>
+					<p>{event.eventTime}</p>
+					<h4>What the event is about:</h4> 
+					<p>{event.eventDescription}</p>
+				</div>
+			</div>
+		</>
+		}
     </>
 	)
 }
