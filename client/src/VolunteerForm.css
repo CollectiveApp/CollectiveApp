@@ -1,0 +1,7 @@
+.bg-overlay-volunteer{
+	width: 100vw;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0 121 145 /90%), rgba(120 255 214 /90%)), url('../public/images/rs_logo.png');
+    background-repeat: repeat;
+    padding-bottom: 160px;
+}

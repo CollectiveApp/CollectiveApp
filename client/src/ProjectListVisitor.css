@@ -13,7 +13,7 @@
 }
 .heading-project-container {
     width: 100vw;
-    padding-top: 15vh;
+    padding-top: 19vh;
     color: rgb(255 153 102);
     font-size: 24px;
     display: flex;
@@ -22,7 +22,7 @@
 }
 .project-container {
     margin: 0px 300px 0px;
-    padding-top: 80px;
+    padding-top: 40px;
     padding-bottom: 100px;
     background-color:rgba(255, 228, 196, 0.842);
 }
@@ -44,18 +44,8 @@
     color: rgb(255 94 98 );
     font-size: 20px;
 }
-.line {
-    width: 14vw;
-    border: 0.5px solid rgb(255 153 102);
-    border-radius: 50px;
-}
-.line-one {
-    width: 12vw;
-    border: 0.5px solid rgb(255 153 102);
-    border-radius: 50px;
-}
 .line-two {
-    width: 10vw;
+    width: 400px;;
     border: 0.5px solid rgb(255 153 102);
     border-radius: 50px;
 }

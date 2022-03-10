@@ -63,8 +63,9 @@ export default function VolunteerForm() {
     }
 
   return (
-  <>  
-    <p>Fill out the form to become a Volunteer</p>
+  <> 
+    <div className='page-container bg-overlay-volunteer'>
+    <div className='heading-project-container'><h1>BECOME A VOLUNTEER</h1></div>
     <form onSubmit={handleSubmit}>
             {/* <label>Picture: </label>
                 <input id="pictureUrl" name="pictureUrl"  type="file"/> */}
@@ -95,6 +96,7 @@ export default function VolunteerForm() {
                 <input id="personalMessage" name="personalMessage" type="text" placeholder='Something you wanna tell us?' value={personalMessage} onChange={e => setPersonalMessage(e.target.value)}/>
             <button type='submit'>Apply to Volunteer</button>
     </form>
+    </div>
   </>  
   )
 }
