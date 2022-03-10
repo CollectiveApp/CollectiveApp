@@ -1,0 +1,14 @@
+.bg-overlay-event-detail {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(218, 210, 153, 0.829), rgb(141, 194, 111)), url('../public/images/rs_logo.png');
+    background-repeat: repeat;
+}
+.event-detail-container{
+    height: 60vh;
+    width: 70vw;
+    padding: 10px 50px;
+    background-color: rgba(197, 134, 115, 0.383);
+    border-radius: 20px;
+    color: rgb(207, 114, 116);
+}
