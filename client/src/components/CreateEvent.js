@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import Maps from './Maps';
 import PlacesAutocomplete from './autocompleteBar';
-import service from '../api/service'
+import serviceEvent from '../api/serviceEvent'
 
 
 
@@ -53,7 +53,7 @@ export default function CreateEvent(props) {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
     const uploadData = new FormData();
     uploadData.append("eventPicture", e.target.files[0]);
-    service
+    serviceEvent
       .uploadImage(uploadData)
       .then(response => {
         setEventPicture([response.secure_url, ...eventPicture]);
@@ -71,7 +71,7 @@ export default function CreateEvent(props) {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label htmlFor='Name'>Name</label>
         <input type="text" value={eventName} onChange={handleEventName}></input>
         <label htmlFor='Description'>Description</label>
@@ -95,19 +95,19 @@ export default function CreateEvent(props) {
         </label>
         </div>
         
-        <div>
+        {/* <div>
             <h2>Upload images</h2>
-            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
+            <input id="eventImage" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)}/>
+        </div> */}
+        {/* <div>
+            <input id="eventImages" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)} />
         </div>
         <div>
-            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
-        </div>
-        <div>
-            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
+            <input id="eventImages" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)} />
         </div>
          <div>
-            <input id="eventImages" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)} />
-        </div>
+            <input id="eventImages" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)} />
+        </div> */}
         
         <div>
             <label htmlFor='Outdoor'>Outdoor</label>

@@ -1,5 +1,7 @@
 const Event = require("../models/Event");
 const router = require("express").Router();
+// require Cloudinary
+const fileUploader = require('../config/cloudinary.config');
 
 // get all events
 router.get('/', (req, res, next) => {
@@ -9,6 +11,16 @@ router.get('/', (req, res, next) => {
       res.status(200).json(events)
   })
 });
+// upload file to cloudinary
+router.post('/upload', fileUploader.single("eventPicture"), (req, res, next) => {
+  console.log("file is:", req.file)
+  if(!req.file) {
+    next(new Error("No file uploaded!"))
+    return
+  }
+  console.log("urls", url)
+  res.json({ secure_url: url })
+})
 
 // create new event
 
