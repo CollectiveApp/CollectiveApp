@@ -74,10 +74,12 @@ export default function EventsVisitors(){
     }
     
     return(
-        <div className="events-view-background">
+    <>
         <div>
             <EventNavbar />
         </div>
+        <div className="events-view-background">
+        <div className='heading-project-container'></div>
         <div className="events-view-back">
             <div className="filters-box">
                 <div className="filter-title">
@@ -89,23 +91,23 @@ export default function EventsVisitors(){
                     <SearchBarEvent setQueryProp={setQuery}/>
                     <TypeFilterEvent type={type} setTypeProp={setType}/>
                     <ToggleEvent setCheckProp={setToggle}/>
-                </div>
-                
+                </div> 
             </div>
             <div className="events-view-box">
-                <h2>Events</h2>
+                <h2 className="event-heading">UPCOMING EVENTS</h2>
             {filteredEvents.map(event =>{
             return(
                 <div key={event._id} className='events-view-ind-box'>
-                    <div className="events-view-image-box">{event.eventPicture}</div>
-                    <div>
-                    <hr className="hr"></hr>
-                    <h3>{event.eventName}</h3>
+                <div className="events-view-image-box">{event.eventPicture}</div>
+                <div>
+                    <h3 className="event-title">{event.eventName}</h3>
                     <div className="event-description">{event.eventDescription}</div>
                     <div>{event.eventType}</div>
-                    <div>{event.eventDate}</div>    
-                    <Link to={`/events/${event._id}`}>Details</Link>
-                    </div>
+                    <div>{event.eventDate}</div>
+                    <hr className="hr"></hr>  
+                    <Link className="event-link" to={`/events/${event._id}`}>Details</Link>
+                    <hr className="hr"></hr>
+                </div>
                 </div>)
             })}
 
@@ -113,5 +115,6 @@ export default function EventsVisitors(){
             </div>
         </div>
         </div>
+    </>
     )
 }
