@@ -1,10 +1,13 @@
 nav {
+    padding-top: 20px;
     background-color: bisque;
     height: 11vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
+    position: fixed;
 }
 .nav-link {
     text-decoration: none;
