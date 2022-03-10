@@ -29,6 +29,7 @@ const storedToken = localStorage.getItem('authToken')
 		<div className='heading-projectdetail-container'></div>
 		<div className='project-container'>
 			<h1 className='project-title'>{project.projectName}</h1>
+			<hr className='line'></hr>
 			<div className='carousel-wrapper'>
 			<Carousel useKeyboardArrows autoPlay infiniteLoop>
 				{project.projectImageUrls.map(image => { 

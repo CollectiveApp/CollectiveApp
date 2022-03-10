@@ -1,0 +1,84 @@
+.bg-overlay-volunteer{
+    background: linear-gradient(0deg, rgba(0 121 145 /90%), rgba(120 255 214 /90%)), url('../public/images/rs_logo.png');
+    background-repeat: repeat;
+    padding-bottom: 160px;
+}
+.heading-volunteer-container {
+    width: 100vw;
+    padding-top: 19vh;
+    color: rgb(199, 90, 36);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+.project-container-volunteer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.volunteer-form {
+    display: flex;
+    flex-direction: column;
+}
+.inputfield-container {
+    background-color: #00799186;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    margin-top: 0px;
+    padding: 60px;
+    padding-top: 0px;
+    border-radius: 20px;
+}
+.inputfield {
+    border-radius: 20px;
+    border-style: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    padding-left: 15px;
+}
+.inputfield-message {
+    border-radius: 15px;
+    border-style: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    height: 15vh;
+}
+.label-form {
+    margin-top: 30px;
+    font-size: 20px;
+    color:rgb(199, 90, 36);
+    display: flex;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+.checkbox-container {
+    display: flex;
+    margin-top: 5px;
+    padding: 5px;
+    color: rgb(199, 90, 36);
+}
+.checkbox {
+    padding-right: 15px;
+}
+.btn-form {
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 30px;
+    border-style: none;
+    background-color: #78ffd6;
+    color:rgb(199, 90, 36);
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+::placeholder {
+    color: #007991;
+    text-align: start;
+  }
