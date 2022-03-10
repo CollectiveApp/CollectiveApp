@@ -1,10 +1,9 @@
 .events-view-background{
     background: linear-gradient(0deg, rgba(222, 245, 19, 0.9), rgba(243, 247, 38, 0.61)), url('../public/images/rs_logo.png');
     background-repeat: repeat;
-    padding-bottom: 220px;
+    height: 100%;
     width: 100%;
 }
-
 .events-view-back {
     display: flex;
     align-items: flex-start;
@@ -13,8 +12,8 @@
     background-size: cover;
     background-position: center;
 }
-
 .filters-box{
+    color: rgb(170, 123, 172);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,25 +21,21 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: rgba(245, 247, 162, 0.705);
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    box-shadow: 0 3px 10px rgb(170, 123, 172);
     padding: 10px;
-    margin-top: 140px;
     position: fixed;
 }
-
 .filterEvent-input-box{
-  
     border-top: 0px;
     border-left:0px;
     border-bottom-style: 1px;
     border-right: 0px; 
-    border-color: black;
+    border-color: rgb(170, 123, 172);
     background-color: white;
     width: 150px;
     margin-bottom: 8px;
     height: 25px;
 }
-
 .events-view-box{
     display: flex;
     flex-direction: column;
@@ -49,13 +44,13 @@
     height: fit-content;
     background-color: rgba(220, 220, 220, 0.575);
     margin-left: 275px;
-    margin-top: 140px;
     margin-right: 20px;
-    border-radius: 10px;
+    margin-bottom: 100px;
+    padding: 20px 0px 60px 0px;
+    border-radius: 20px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    
+    color: gray;
 }
-
 .events-view-ind-box{
     display: flex;
     flex-direction: row;
@@ -64,7 +59,24 @@
     align-items: center;
 }
 .hr{
-    width: 550px;
+    width: 120px;
+    border: 0.5px solid rgba(170, 123, 172, 0.493);
+    border-radius: 50px;
+}
+.event-link {
+    text-decoration: none;
+    color: gray;
+    font-size: 17px;
+}
+.event-title {
+    color:rgb(170, 123, 172);
+    font-weight: bolder;
+    font-size: 24px;
+}
+.event-heading {
+    color:rgb(170, 123, 172);
+    font-weight: bolder;
+    font-size: 40px;
 }
 .events-view-image-box{
     display: flex;
@@ -81,7 +93,6 @@
 .event-description{
     font-size: 15px;
     color: gray;
-
 }
 
 .glow-on-events {
@@ -90,7 +101,7 @@
     border: none;
     outline: none;
     color: #fff;
-    background: #111;
+    background: gray;
     cursor: pointer;
     position: relative;
     z-index: 0;
@@ -116,7 +127,7 @@
 }
 
 .glow-on-events:active {
-    color: #000
+    color: gray
 }
 
 .glow-on-events:active:after {
@@ -133,7 +144,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: gray;
     left: 0;
     top: 0;
     border-radius: 10px;
