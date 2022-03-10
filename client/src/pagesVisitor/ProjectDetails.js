@@ -17,36 +17,46 @@ const storedToken = localStorage.getItem('authToken')
 			})
 			.catch(err => console.log(err))
 	}, [])
-
+	console.log(project)
 	return (
 	<>
-		<div>
-			<EventNavbar />
-		</div>
-			{project === null ? <div>Loading ...</div> :
-			<>
-				{project.projectImageUrl.map(image => { 
-					console.log(image)
+	{project === null ? <div>Loading ...</div> :
+	<>
+		<EventNavbar />
+		<div className='bg-overlay page-container'> 
+		<div className='heading-projectdetail-container'></div>
+		<div className='project-container'>
+			<div className='image-gallery'>
+				{project.projectImageUrls.map(image => { 
+				console.log(image)
 					return (
-					<div key={project._id}>
-					<img src={image} alt="ProjectPictures"/>
-					</div>
+						<div className='image-gallery-single' key={project._id}>
+							<img src={image} alt="ProjectPictures"/>
+						</div>
 					)
-					}
+				}
 				)}
-				<h1>{project.projectName}</h1>
-          		<h4>Location: {project.projectLocation}</h4>
-          		<h5>Date: {project.projectStartDate}  -  {project.projectEndDate}</h5>
-				<p>What the project is about: {project.projectDescription}</p>
-				<p>Looking for: {project.projectSkillsNeeded}</p>
-				<div>
-				<h4>Wanna Participate?</h4>
-				<h5>Click</h5>
-				<h5>Pfeil nach unten</h5>
-				<Link to={`/volunteer/${project._id}`}>Volunteer</Link>
-				</div>
-			</>
-			}
-    </>
+			</div>
+			<h1 className='projectTitle'>{project.projectName}</h1>
+			<hr className='line'></hr>
+			<div className='project-detail-container'>
+				<h4><img className='map-icon' src='/images/placeholder.png' alt=''/>{project.projectLocation}</h4>
+				<h5>{project.projectStartDate}  -  {project.projectEndDate}</h5>
+				<h4>What the project is about: </h4>
+				<p>{project.projectDescription}</p>
+				<h4>Looking for:</h4>
+				<p>{project.projectSkillsNeeded}</p>
+			</div>
+			<div className='click-volunteer-container'>
+				<h4 className='project-text'>Wanna Participate?</h4>
+				<h5 className='project-text'>Click</h5>
+				<img className='arrow-icon' src='/images/down-arrow.png' alt='pfeil'/><br></br>
+				<Link className='project-link' to={`/volunteer/${project._id}`}>Volunteer</Link>
+			</div>
+		</div>
+		</div>
+	</>
+	}
+	</>
 	)
 }

@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 });
 
 // upload file to cloudinary
-router.post('/upload', fileUploader.array("projectImageUrls", 5), (req, res, next) => {
+router.post('/upload', fileUploader.array("projectImageUrls"), (req, res, next) => {
   console.log("file is:", req.files)
   if(!req.files) {
     next(new Error("No file uploaded!"))

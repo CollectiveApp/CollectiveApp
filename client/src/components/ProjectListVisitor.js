@@ -28,7 +28,7 @@ useEffect(() => {getAllProjects()}, [])
 
     return(
       <>
-        <div className='bg-overlay'> 
+        <div className='bg-overlay page-container'> 
         <div className='heading-project-container'><h1>UPCOMING PROJECTS</h1></div>
         <div className='project-container'>
         {projects.map(project => {
@@ -37,10 +37,8 @@ useEffect(() => {getAllProjects()}, [])
                   <h1 className='projectTitle'>{project.projectName.toUpperCase()}</h1>
                   <h2 className='project-text'>{project.projectLocation}</h2>
                   <h3 className='project-text'>{project.projectStartDate} - {project.projectEndDate}</h3>
-                  <hr className='line'></hr>
-                  <Link className="project-link" to={`/projects/${project._id}`}>Details & Volunteer</Link>
-                  <hr className='line'></hr>
-                  <hr className='line-one'></hr>
+                  <hr className='line-two'></hr>
+                  <Link className='project-link' to={`/projects/${project._id}`}>Details & Volunteer</Link>
                   <hr className='line-two'></hr>
                 </div>
             )
