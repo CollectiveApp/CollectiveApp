@@ -75,34 +75,44 @@ export default function EventsVisitors(){
 
     
     return(
-        <>
+        <div className="events-view-background">
         <div>
             <EventNavbar />
         </div>
         <div className="events-view-back">
             <div className="filters-box">
-                <p>Filter</p>
-                <DateFilterEvent eventDate={eventDate} setEventDateProp={setEventDate}/>
-                <button onClick={handleClean}>clean</button> 
-                <SearchBarEvent setQueryProp={setQuery}/>
-                <TypeFilterEvent type={type} setTypeProp={setType}/>
-                <ToggleEvent setCheckProp={setToggle}/>
+                <div className="filter-title">
+                    <p>Find your event</p>
+                </div>
+                <div>
+                    <DateFilterEvent eventDate={eventDate} setEventDateProp={setEventDate}/>
+                    <button className='glow-on-events' onClick={handleClean}>Reset date</button> 
+                    <SearchBarEvent setQueryProp={setQuery}/>
+                    <TypeFilterEvent type={type} setTypeProp={setType}/>
+                    <ToggleEvent setCheckProp={setToggle}/>
+                </div>
                 
             </div>
-            <div>
+            <div className="events-view-box">
+                <h2>Events</h2>
             {filteredEvents.map(event =>{
             return(
-                <div key={event._id}>
-                    <div>{event.eventPicture}</div>
-                    <h5>{event.eventName}</h5>
-                    <div>{event.eventDescription}</div>
+                <div key={event._id} className='events-view-ind-box'>
+                    <div className="events-view-image-box">{event.eventPicture}</div>
+                    <div>
+                    <hr className="hr"></hr>
+                    <h3>{event.eventName}</h3>
+                    <div className="event-description">{event.eventDescription}</div>
+                    <div>{event.eventType}</div>
+                    <div>{event.eventDate}</div>    
                     <Link to={`/events/${event._id}`}>Details</Link>
+                    </div>
                 </div>)
             })}
 
                 
             </div>
         </div>
-        </>
+        </div>
     )
 }
