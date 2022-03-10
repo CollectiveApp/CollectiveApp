@@ -71,30 +71,27 @@ export default function CreateEvent(props) {
 
   return (
     <>
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label htmlFor='Name'>Name</label>
-        <input type="text" value={eventName} onChange={handleEventName}></input>
-        <label htmlFor='Description'>Description</label>
-        <input type="text" value={eventDescription} onChange={handleEventDescription}></input>
-        <label htmlFor='Date'>Date</label>
-        <input type="date" value={eventDate} onChange={handleEventDate}></input>
-        <label htmlFor='Time'>Time</label>
-        <input type="time" value={eventTime} onChange={handleEventTime}></input>
-        <label htmlFor='Location'>Location</label>
-        <input type="text" value={eventLocation} onChange={handleEventLocation}></input>
-        <div>
-            Event Type
-        </div>
-        <div>
+    <h2>Create a new Event</h2>
+    <form  className="popUp-form" onSubmit={handleSubmit} encType="multipart/form-data">
+      <div className="popUp-container">
+        <label className='label-popUp' htmlFor='Name'>Name</label>
+        <input className="inputfield" type="text" value={eventName} onChange={handleEventName}></input>
+        <label className='label-popUp' htmlFor='Description'>Description</label>
+        <input className="inputfield" type="text" value={eventDescription} onChange={handleEventDescription}></input>
+        <label className='label-popUp' htmlFor='Date'>Date</label>
+        <input className="inputfield" type="date" value={eventDate} onChange={handleEventDate}></input>
+        <label className='label-popUp' htmlFor='Time'>Time</label>
+        <input className="inputfield" type="time" value={eventTime} onChange={handleEventTime}></input>
+        <label className='label-popUp' htmlFor='Location'>Location</label>
+        <input className="inputfield" type="text" value={eventLocation} onChange={handleEventLocation}></input>
+        <label className='label-popUp'>Event Type</label>
         <label>
-            <select value={eventType} onChange={handleEventType}>
+            <select className="inputfield" value={eventType} onChange={handleEventType}>
                 {options.map((option) => (
                 <option value={option.value}>{option.label}</option>
                 ))}
             </select>
         </label>
-        </div>
-        
         {/* <div>
             <h2>Upload images</h2>
             <input id="eventImage" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)}/>
@@ -109,10 +106,8 @@ export default function CreateEvent(props) {
             <input id="eventImages" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)} />
         </div> */}
         
-        <div>
-            <label htmlFor='Outdoor'>Outdoor</label>
+            <label className='label-popUp' htmlFor='Outdoor'>Outdoor</label>
             <input type="checkBox" value={eventOutdoor} onChange={handleCheckBox}/>
-        </div>
         
         
         
@@ -121,8 +116,8 @@ export default function CreateEvent(props) {
           <Maps />
         </div> */}
         
-                
-        <button type='submit'>Submit New Event</button>
+      </div>        
+        <button className="popUp-btn" type='submit'>+</button>
     </form>
     </>
   )
