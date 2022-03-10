@@ -68,6 +68,25 @@ export default function CreateEvent(props) {
   const handleEventType = e => setEventType(e.target.value)
   const handleEventLocation = e => setEventLocation(e.target.value)
   const handleCheckBox = e => setEventOutdoor(e.target.checked)
+  // const handleFileUpload = e => {
+  //   const uploadData = new FormData();
+  //   const uploadedFiles = [...e.target.files]
+
+  //   console.log(uploadedFiles)
+  //   console.log(e.target.files[0])
+    
+  //   uploadedFiles.map(file  => {
+  //   console.log(file)
+  //   uploadData.append("projectImageUrls", file);
+  //   service
+  //     .uploadImage(uploadData)
+  //     .then(response => {
+  //         console.log('response.secure_url', response.secure_url)
+  //       setProjectImageUrls([...response.secure_url, ...projectImageUrls]);
+  //     })
+  //     .catch(err => console.log("Error while uploading the file: ", err));
+  //   })
+  // };
 
   return (
     <>
@@ -92,19 +111,11 @@ export default function CreateEvent(props) {
                 ))}
             </select>
         </label>
-        {/* <div>
-            <h2>Upload images</h2>
-            <input id="eventImage" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)}/>
-        </div> */}
-        {/* <div>
-            <input id="eventImages" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)} />
-        </div>
         <div>
-            <input id="eventImages" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)} />
-        </div>
-         <div>
-            <input id="eventImages" name="eventPicture" type="file" onChange={(e) => handleFileUpload(e)} />
-        </div> */}
+        <h2>Upload images</h2>
+        <input className="inputfield" id="eventPicture" name="eventPicture" type="file"/>
+        {/* onChange={(e) => handleFileUpload(e)} multiple */}
+      </div>
         
             <label className='label-popUp' htmlFor='Outdoor'>Outdoor</label>
             <input type="checkBox" value={eventOutdoor} onChange={handleCheckBox}/>

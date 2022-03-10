@@ -78,68 +78,72 @@ export default function EditProject(props) {
 
 	return (
 		<>
-			<h1>Edit <>{eventName}</> event</h1>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="eventName">Event name </label>
+			<div>Edit {eventName} event</div>
+			<form onSubmit={handleSubmit} className="popUp-form" >
+				<div className="popUp-container">
+				<label className='label-popUp' htmlFor="eventName">Event name </label>
 				<input
+					className="inputfield"
 					id="eventName"
 					name='eventName'
 					type="text"
 					value={eventName}
 					onChange={e => setEventName(e.target.value)}
 				/>
-				<label htmlFor="eventName">Description </label>
+				<label className='label-popUp' htmlFor="eventDescription">Description </label>
 				<input
+					className="inputfield"
 					id="eventDescription"
 					name='eventDescription'
 					type="text"
 					value={eventDescription}
 					onChange={e => setEventDescription(e.target.value)}
 				/>
-        <div>
-            Event Type
-        </div>
-        <div>
-        <label>
+        
+        <label className='label-popUp' htmlFor="eventType"> Event Type
             <select value={eventType} onChange={handleEventType}>
                 {options.map((option) => (
                 <option value={option.value}>{option.label}</option>
                 ))}
             </select>
         </label>
-        </div>
-        <label htmlFor="eventName">Date </label>
+        
+        <label className='label-popUp' htmlFor="eventDate">Date </label>
 				<input
+					className="inputfield"
 					id="eventDate"
 					name='eventDate'
 					type="date"
 					value={eventDate}
 					onChange={e => setEventDate(e.target.value)}
 				/>
-        <label htmlFor="eventName">Time </label>
+        <label className='label-popUp' htmlFor="eventTime">Time </label>
 				<input
+					className="inputfield"
 					id="eventTime"
 					name='eventTime'
 					type="time"
 					value={eventTime}
 					onChange={e => setEventTime(e.target.value)}
 				/>
-        <label htmlFor="eventName">Location </label>
+        <label className='label-popUp' htmlFor="eventLocation">Location </label>
 				<input
+					className="inputfield"
 					id="eventLocation"
 					name='eventLocation'
 					type="text"
 					value={eventLocation}
 					onChange={e => setEventLocation(e.target.value)}
 				/>
-		<div>
+		<div className='label-popUp'>
             Outdoor
             <input type="checkBox" value={eventOutdoor} name='outdoors' onChange={handleCheckBox}/>
         </div>
         <div>
             <h2>Upload images</h2>
-            <input id="eventPicture" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
+            <input className="inputfield" id="eventPicture" name="imageUpload" type="file" onChange={(e) => handleFileUpload(e)}/>
         </div>
+		</div>
 				
 				<button type="submit">Update this project</button>
 			</form>
