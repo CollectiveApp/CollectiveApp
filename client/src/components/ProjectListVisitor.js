@@ -28,19 +28,22 @@ useEffect(() => {getAllProjects()}, [])
 
     return(
       <>
-        <div className='project-container'> 
-        <div className='heading-project-container'><h1>Upcoming Projects</h1></div>
+        <div className='bg-overlay'> 
+        <div className='heading-project-container'><h1>UPCOMING PROJECTS</h1></div>
+        <div className='project-container'>
         {projects.map(project => {
             return (
                 <div key={project._id}>
-                  <h1>{project.projectName}</h1>
-                  <h2>{project.projectLocation}</h2>
-                  <h3>{project.projectStartDate} - {project.projectEndDate}</h3>
-                  <Link to={`/projects/${project._id}`}>Details & Volunteer</Link>
+                  <h1 className='projectTitle'>{project.projectName}</h1>
+                  <h2 className='project-text'>{project.projectLocation}</h2>
+                  <h3 className='project-text'>{project.projectStartDate} - {project.projectEndDate}</h3>
+                  <Link className="project-link" to={`/projects/${project._id}`}>Details & Volunteer</Link>
+                  <hr></hr>
                 </div>
             )
         })
         }
+        </div>
         </div>  
       </>
     )

@@ -1,6 +1,8 @@
 header {
     background-color: bisque;
     height: 10vh;
+    display: flex;
+    justify-content: center;
 }
 .logo {
     width: 30vw;
@@ -8,26 +10,17 @@ header {
   .icon {
     width: 5vw;
   }
-  .home-project-btn {
-    padding: 10px 0px 10px 30px; 
+  .home-btn {
+    padding: 10px 30px 10px 30px; 
     background-color: bisque;
     border: none;
     border-radius: 30px 0px 0px 30px;
     text-align: center;
-    display: inline-block;
-  }
-  .home-event-btn {
-    padding: 10px 30px 10px 30px;
-    background-color: bisque;
-    border: none;
-    border-radius: 0px 30px 30px 0px;
-    text-align: center;
-    display: inline-block; 
   }
   .home-link {
     text-decoration: none;
-    color: black;
-    font-size: 16px;
+    color: orange;
+    font-size: 24px;
   }
   .home-container {
     font-family: fantasy;
