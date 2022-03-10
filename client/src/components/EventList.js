@@ -37,10 +37,18 @@ export default function EventList() {
     
     return(
         <>
-            <button onClick={()=> setShowCreateEvent(!showCreateEvent)}>CreateEvent</button>
-            {showCreateEvent && (
+          <div className='dash-title-box'>
+            <div className='dash-titles'>
+              Events
+            </div>
+            <div>
+              <button className='button-create' onClick={()=> setShowCreateEvent(!showCreateEvent)}>CreateEvent</button>
+                {showCreateEvent && (
                 <PopupCreateEvent refreshEvents={getAllEvents} handleClose={() => setShowCreateEvent(false)}/>
-            )}
+              )}
+            </div>
+          </div>
+            
             {events.map(event=>
               <div key={event._id}>
                 <h1>{event.eventName}</h1>
@@ -57,6 +65,7 @@ export default function EventList() {
                         })
                       .catch(err => console.log(err))
                   }}>Delete</button>
+                  <hr className='dash-line'></hr>
             </div>)}
         </>
     )  

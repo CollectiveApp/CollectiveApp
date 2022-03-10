@@ -21,10 +21,10 @@ function Navbar() {
       {/*    UPDATE     */}
       {isLoggedIn && (
         <>
-          {/* <Link to='/logout'>
-            <img className="logout" src="/images/logout.png" alt="Logout"/>
-          </Link> */}
-          <button className="nav-link" onClick={logOutAdmin}>logout</button>    
+          <Link to='/' className="nav-link">
+            LOG-OUT
+          </Link> 
+          
         </>
       )}
 

@@ -40,7 +40,7 @@ useEffect(() => {getAllProjects()}, [])
               Projects
             </div>
             <div>
-              <button onClick={() => setShowCreateProject(!showCreateProject)}>Create Project</button>
+              <button className='button-create' onClick={() => setShowCreateProject(!showCreateProject)}>Create Project</button>
                 {showCreateProject && (
                   <PopUpCreateProject refreshProjects={getAllProjects} handleClose={() => setShowCreateProject(false)}/>
                 )}

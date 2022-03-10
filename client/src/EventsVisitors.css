@@ -24,7 +24,7 @@
     background-color: rgba(245, 247, 162, 0.705);
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     padding: 10px;
-    margin-top: 100px;
+    margin-top: 140px;
     position: fixed;
 }
 
@@ -49,7 +49,7 @@
     height: fit-content;
     background-color: rgba(220, 220, 220, 0.575);
     margin-left: 275px;
-    margin-top: 100px;
+    margin-top: 140px;
     margin-right: 20px;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);

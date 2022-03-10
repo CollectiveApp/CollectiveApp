@@ -12,27 +12,17 @@ export default function AdminDashboard() {
             <div>
                 <Navbar />
             </div>
+
+            <div className='dash-vol-box'>    
+                <Link className='nav-link' to={'/behind-the-scences/volunteers/fullList'}>Check the volunteers Database</Link>               
+            </div>
+
             <div className='dash-body'>
-                <div className='dash-box'>
-                    <div>
-                        <ProjectList />
-                    </div>
+                <div className='dash-box'>    
+                    <ProjectList />
                 </div>
                 <div className='dash-box'>
-                    <div>
-                        <h3>Events</h3>
-                    </div>
-                    <div>
-                        <EventList />
-                    </div>
-                </div>
-                <div className='dash-box'>
-                    <div>
-                        <h1>Volunteers</h1>
-                    </div>
-                    <div>
-                        <Link to={'/behind-the-scences/volunteers/fullList'}>Volunteers Database</Link>
-                    </div>
+                    <EventList />
                 </div>
             </div>
         </div>
