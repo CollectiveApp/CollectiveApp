@@ -75,9 +75,9 @@ const handleSubmit = e => {
         <label className='label-popUp'>Location</label>
         <input className="inputfield" id="projectLocation" name="projectLocation"  type="text" value={projectLocation} onChange={e => setProjectLocation(e.target.value)}></input>
         <label className='label-popUp'>Project Start</label>
-        <input className="inputfield" id="projectStartDate" name="projectStartDate"  type="date" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}></input>
+        <input className="inputfield date-input" id="projectStartDate" name="projectStartDate"  type="date" value={projectStartDate} onChange={e => setProjectStartDate(e.target.value)}></input>
         <label className='label-popUp'>Project End</label>
-        <input className="inputfield" id="projectEndDate" name="projectEndDate" type="date" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}></input>
+        <input className="inputfield date-input" id="projectEndDate" name="projectEndDate" type="date" value={projectEndDate} onChange={e => setProjectEndDate(e.target.value)}></input>
         <label className='label-popUp'>Project Description</label>
         <input className="inputfield" id="projectDescription" name="projectDescription" type="text" value={projectDescription} onChange={e => setProjectDescription(e.target.value)}></input>
         <label className='label-popUp'>Looking for Volunteers</label>
