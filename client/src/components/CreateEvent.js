@@ -79,7 +79,7 @@ export default function CreateEvent(props) {
         <label className='label-popUp' htmlFor='Description'>Description</label>
         <input className="inputfield" type="text" value={eventDescription} onChange={handleEventDescription}></input>
         <label className='label-popUp' htmlFor='Date'>Date</label>
-        <input className="inputfield" type="date" value={eventDate} onChange={handleEventDate}></input>
+        <input className="inputfield date-input" type="date" value={eventDate} onChange={handleEventDate}></input>
         <label className='label-popUp' htmlFor='Time'>Time</label>
         <input className="inputfield" type="time" value={eventTime} onChange={handleEventTime}></input>
         <label className='label-popUp' htmlFor='Location'>Location</label>
