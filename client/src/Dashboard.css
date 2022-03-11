@@ -3,8 +3,9 @@
     flex-direction: row;
     background-color: aliceblue;
     background-size: cover;
-    width: 100%;
+    width: 100vw;
     height: 100%;
+    object-fit: cover;
     background: url('../public/images/admin_back.jpg');
 }
 .dash-body{
@@ -24,7 +25,6 @@
     margin-top: 150px;
     padding-left: 2%;
     padding-right: 2%;
-    height: 100%;
 }
 .dash-titles{
     font-size: 30px;
@@ -48,7 +48,7 @@
     justify-content: space-between;
     align-items: baseline;
     height: fit-content;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .dash-line{
     width: 90%;
